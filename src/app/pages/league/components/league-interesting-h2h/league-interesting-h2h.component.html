@@ -1,0 +1,48 @@
+<div class="section">
+  <app-header-component
+    class="section-header"
+    [title]="title + ' Interesting Head To head’s'"
+  ></app-header-component>
+
+  <ng-container *ngIf="fixtures.length; else noDataFound">
+    <div class="section-body">
+      <div class="h2h-matches" *ngFor="let item of fixtures">
+        <app-home-team
+          (click)="navigateToTeamPage(item.local_team.name)"
+          [home]="item.local_team.name"
+          [homeEmblem]="item.local_team.logo_path"
+          class="team"
+          [class.winner]="item.localteam_score > item.visitorteam_score"
+        ></app-home-team>
+        <div class="stats">
+          <div class="h2h-score">
+            <p [class.winner]="item.localteam_score > item.visitorteam_score">
+              {{ item.localteam_score }}
+            </p>
+            <span>&mdash;</span>
+            <p [class.winner]="item.localteam_score < item.visitorteam_score">
+              {{ item.visitorteam_score }}
+            </p>
+          </div>
+          <app-stats
+            (click)="navigateToH2h(item.localteam_id, item.visitorteam_id)"
+          ></app-stats>
+        </div>
+        <app-away-team
+          (click)="navigateToTeamPage(item.visitor_team.name)"
+          [away]="item.visitor_team.name"
+          [awayEmblem]="item.visitor_team.logo_path"
+          class="team"
+          [class.winner]="item.localteam_score < item.visitorteam_score"
+        ></app-away-team>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #noDataFound>
+  <app-not-stat
+    [title]="title + ' Interesting Head To head’s'"
+    [addPadding]="true"
+  ></app-not-stat>
+</ng-template>

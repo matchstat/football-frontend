@@ -1,0 +1,76 @@
+<div class="section">
+  <!-- league info details -->
+</div>
+<div class="league" *ngIf="leagueInfo">
+  <div class="header">
+    <div class="league-logo">
+      <img [src]="leagueInfo.logo_path" alt="" />
+    </div>
+    <div class="league-name">
+      <span>{{ leagueInfo.name }}</span>
+      <app-select-range
+        [seasons]="seasons"
+        (selectedSeason)="selectedSeason($event)"
+        [curSeason]="league?.currentSeasonId"
+        [needWhiteDropdown]="true"
+      ></app-select-range>
+    </div>
+    <div class="league-type">
+      <p class="label">Type</p>
+      <p class="type">{{ leagueInfo.type }}</p>
+    </div>
+  </div>
+  <div class="country">
+    <img [src]="leagueInfo.country_flag" class="country-flag" />
+    <span class="country-name">
+      {{ leagueInfo.country }}
+    </span>
+  </div>
+  <div class="stats">
+    <div class="state">
+      <p class="label">Start date</p>
+      <p class="state-data">
+        {{ leagueInfo.seasonsDates?.startDate | date : "dd.MM.yyyy" }}
+      </p>
+    </div>
+    <div class="state">
+      <p class="label">End date</p>
+      <p class="state-data">
+        {{ leagueInfo.seasonsDates?.endDate | date : "dd.MM.yyyy" }}
+      </p>
+    </div>
+    <div class="state">
+      <p class="label">fixtures played</p>
+      <p class="state-data">
+        {{ leagueInfo?.seasonsDates?.numberOfMatchesPlayed }}
+        <span
+          *ngIf="
+            leagueInfo?.seasonsDates?.numberOfMatchesPlayed &&
+            leagueInfo?.seasonsDates?.numberOfMatches
+          "
+          >/</span
+        >
+        {{ leagueInfo?.seasonsDates?.numberOfMatches }}
+      </p>
+    </div>
+    <div class="state">
+      <p class="label">league progress</p>
+      <p class="state-data">{{ leagueInfo?.seasonsDates?.progress }}</p>
+    </div>
+  </div>
+</div>
+<div class="section card past-champions">
+  <h2 class="section-header">{{ leagueInfo?.name }} Past Champions</h2>
+  <ng-container *ngIf="pastChampions.length; else noDataFound">
+    <div class="section-body">
+      <div class="past-champion" *ngFor="let champion of pastChampions">
+        <p class="year">{{ champion?.season?.data?.name }}</p>
+        <p class="champion">{{ champion?.team_name }}</p>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #noDataFound>
+  <app-not-stat [title]="'Past Champions'" [addPadding]="true"></app-not-stat>
+</ng-template>

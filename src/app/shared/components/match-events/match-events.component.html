@@ -1,0 +1,276 @@
+<div class="section">
+  <div
+    class="section-header"
+  >Match Events</div>
+
+  <div class="section-body">
+      <div class="text-center match-end" *ngIf="!events?.length">
+        Match End  {{matchData?.matchEnd}}
+      </div>
+    <table *ngIf="events?.length">
+      <tbody>
+        <ng-container *ngIf="newObj.firstHalf">
+          <tr class="table-header">
+            <td colspan="2" class="table-header-title">1st half</td>
+            <td colspan="2" class="table-header-value">
+              {{ matchData?.matchEnd }}
+            </td>
+          </tr>
+          <tr *ngFor="let item of newObj.firstHalf">
+            <td
+              class="home-minute"
+              *ngIf="item.home?.player_name; else homeEmpty"
+            >
+              {{ item.home?.minute }}’
+            </td>
+            <td class="home" *ngIf="item.home; else homeEmpty">
+              <ng-container>
+                <ng-container *ngIf="item.home.type === 'goal'">
+                  <span class="goal">
+                    {{ item.home.player_name }}
+                    <div class="icon">
+                      <img src="assets/icons/goal.svg" alt="" />
+                    </div>
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="item.home.type === 'own-goal'">
+                  {{ item.home.player_name }}
+                  Own goal
+                </ng-container>
+                <ng-container *ngIf="item.home.type === 'yellowcard'">
+                  <span class="yellow-card">
+                    {{ item.home.player_name }}
+                    <div class="icon">
+                      <img src="assets/icons/yellow-card.svg" alt="" />
+                    </div>
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="item.home.type === 'redcard'">
+                  <span class="red-card">
+                    {{ item.home.player_name }}
+                    <div class="icon">
+                      <img src="assets/icons/red-card.svg" alt="" />
+                    </div>
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="item.home.type === 'substitution'">
+                  <div class="block">
+                    <span class="substitution">
+                      {{ item.home.player_name }}
+                      <div class="icon">
+                        <img src="assets/icons/out.png" alt="" />
+                      </div>
+                    </span>
+                    <span class="substitution">
+                      {{ item.home.related_player_name }}
+                      <div class="icon">
+                        <img src="assets/icons/in.png" alt="" />
+                      </div>
+                    </span>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </td>
+            <ng-template #homeEmpty>
+              <td></td>
+            </ng-template>
+            <td class="away" *ngIf="item.away; else awayEmpty">
+              <ng-container>
+                <ng-container *ngIf="item.away.type === 'goal'">
+                  <span class="goal">
+                    <div class="icon">
+                      <img src="assets/icons/goal.svg" alt="" />
+                    </div>
+                    {{ item.away.player_name }}
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="item.away.type === 'own-goal'">
+                  <span class="own-goal">
+                    <span class="own-goal">Own goal</span>
+                    {{ item.away.player_name }}
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="item.away.type === 'yellowcard'">
+                  <span class="yellow-card">
+                    <div class="icon">
+                      <img src="assets/icons/yellow-card.svg" alt="" />
+                    </div>
+                    {{ item.away.player_name }}
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="item.away.type === 'redcard'">
+                  <span class="red-card">
+                    <div class="icon">
+                      <img src="assets/icons/red-card.svg" alt="" />
+                    </div>
+                    {{ item.away.player_name }}
+                  </span>
+                </ng-container>
+  
+                <ng-container *ngIf="item.away.type === 'substitution'">
+                  <div class="block">
+                    <span class="substitution">
+                      <div class="icon">
+                        <img src="assets/icons/out.png" alt="" />
+                      </div>
+                      {{ item.away.player_name }}
+                    </span>
+                    <span class="substitution">
+                      <div class="icon">
+                        <img src="assets/icons/in.png" alt="" />
+                      </div>
+                      {{ item.away.related_player_name }}
+                    </span>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </td>
+            <td
+              class="away-minute"
+              *ngIf="item.away?.player_name; else awayEmpty"
+            >
+              {{ item.away?.minute }}’
+            </td>
+            <ng-template #awayEmpty>
+              <td></td>
+            </ng-template>
+          </tr>
+        </ng-container>
+
+        <ng-container *ngIf="newObj.secondHalf">
+          <tr class="table-header">
+            <td colspan="2" class="table-header-title">2nd half</td>
+            <td colspan="2" class="table-header-value">
+              {{ matchData?.matchEnd }}
+            </td>
+          </tr>
+          <tr *ngFor="let item of newObj.secondHalf">
+            <td
+              class="home-minute"
+              *ngIf="item.home?.player_name; else homeEmpty"
+            >
+              {{ item.home?.minute }}’
+            </td>
+            <td class="home" *ngIf="item.home; else homeEmpty">
+              <ng-container>
+                <ng-container *ngIf="item.home.type === 'goal'">
+                  <span class="goal">
+                    {{ item.home.player_name }}
+                    <div class="icon">
+                      <img src="assets/icons/goal.svg" alt="" />
+                    </div>
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="item.home.type === 'own-goal'">
+                  {{ item.home.player_name }}
+                  Own goal
+                </ng-container>
+                <ng-container *ngIf="item.home.type === 'yellowcard'">
+                  <span class="yellow-card">
+                    {{ item.home.player_name }}
+                    <div class="icon">
+                      <img src="assets/icons/yellow-card.svg" alt="" />
+                    </div>
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="item.home.type === 'redcard'">
+                  <span class="red-card">
+                    {{ item.home.player_name }}
+                    <div class="icon">
+                      <img src="assets/icons/red-card.svg" alt="" />
+                    </div>
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="item.home.type === 'substitution'">
+                  <div class="block">
+                    <span class="substitution">
+                      {{ item.home.player_name }}
+                      <div class="icon">
+                        <img src="assets/icons/out.png" alt="" />
+                      </div>
+                    </span>
+                    <span class="substitution">
+                      {{ item.home.related_player_name }}
+                      <div class="icon">
+                        <img src="assets/icons/in.png" alt="" />
+                      </div>
+                    </span>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </td>
+            <ng-template #homeEmpty>
+              <td></td>
+            </ng-template>
+            <td class="away" *ngIf="item.away; else awayEmpty">
+              <ng-container>
+                <ng-container *ngIf="item.away.type === 'goal'">
+                  <span class="goal">
+                    <div class="icon">
+                      <img src="assets/icons/goal.svg" alt="" />
+                    </div>
+                    {{ item.away.player_name }}
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="item.away.type === 'own-goal'">
+                  <span class="own-goal">
+                    <span class="own-goal">Own goal</span>
+                    {{ item.away.player_name }}
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="item.away.type === 'yellowcard'">
+                  <span class="yellow-card">
+                    <div class="icon">
+                      <img src="assets/icons/yellow-card.svg" alt="" />
+                    </div>
+                    {{ item.away.player_name }}
+                  </span>
+                </ng-container>
+                <ng-container *ngIf="item.away.type === 'redcard'">
+                  <span class="red-card">
+                    <div class="icon">
+                      <img src="assets/icons/red-card.svg" alt="" />
+                    </div>
+                    {{ item.away.player_name }}
+                  </span>
+                </ng-container>
+  
+                <ng-container *ngIf="item.away.type === 'substitution'">
+                  <div class="block">
+                    <span class="substitution">
+                      <div class="icon">
+                        <img src="assets/icons/out.png" alt="" />
+                      </div>
+                      {{ item.away.player_name }}
+                    </span>
+                    <span class="substitution">
+                      <div class="icon">
+                        <img src="assets/icons/in.png" alt="" />
+                      </div>
+                      {{ item.away.related_player_name }}
+                    </span>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </td>
+            <td
+              class="away-minute"
+              *ngIf="item.away?.player_name; else awayEmpty"
+            >
+              {{ item.away?.minute }}’
+            </td>
+            <ng-template #awayEmpty>
+              <td></td>
+            </ng-template>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <app-more
+    *ngIf="events?.length !== allEvents?.length"
+    [loaderState]="loaderState"
+    (getMore)="more()"
+  >
+  </app-more>
+</div>

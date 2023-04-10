@@ -1,0 +1,63 @@
+<div class="section" *ngIf="table.length">
+  <h2 class="section-header">Competition Standings</h2>
+
+  <ng-container>
+    <div class="section-body">
+      <div class="result-select">
+        <!-- <app-select-league ></app-select-league> -->
+        <app-select-range
+        (selectedSeason)="selectSeason($event)"
+        [seasons]="seasons"
+        [curSeason]="curSeason"
+        *ngIf="seasons.length"
+        ></app-select-range>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <td style="padding-left: 1rem">N<sup class="underline">o</sup></td>
+            <td style="padding-left: 2rem">Team</td>
+            <td>P</td>
+            <td>W</td>
+            <td>D</td>
+            <td>L</td>
+            <td>GOALS</td>
+            <td>LAST 5</td>
+            <td>PTS</td>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr class="row" *ngFor="let item of table">
+            <td class="row-index position-td">
+              <div class="position">
+                <div [className]="'position-color ' + item.class"></div>
+                {{ item.position }}
+              </div>
+            </td>
+            <td class="row-team">
+              <app-team
+                (click)="navigateToTeamPage(item.name)"
+                [teamName]="item.name"
+                [teamEmblem]="item.logo_path"
+              ></app-team>
+            </td>
+            <td class="row-games">{{ item.stats.gamesPlayed }}</td>
+            <td class="row-wins">{{ item.stats.wins }}</td>
+            <td class="row-draws">{{ item.stats.draws }}</td>
+            <td class="row-lose">{{ item.stats.losses }}</td>
+            <td class="row-goals">
+              {{ item.stats.goalsScored }}:{{ item.stats.goalsAgainst }}
+            </td>
+            <td
+              class="row-lastgames"
+              [innerHTML]="item?.recent_form | lastGames"
+            ></td>
+            <td class="row-points">{{ item.stats.points }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <app-uefa-info></app-uefa-info>
+    </div>
+  </ng-container>
+</div>

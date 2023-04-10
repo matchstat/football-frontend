@@ -1,0 +1,127 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixins";
+
+app-not-stat {
+  ::ng-deep .no-data-header{
+    padding-bottom: 16px;
+    @include for-phone-only {
+      padding-bottom: 8px;
+    }
+  }
+}
+
+.section-body {
+  border-radius: 0;
+  padding-bottom: 16px;
+
+  &.league-table {
+    padding-top: 32px;
+  }
+    @include for-phone-only {
+      padding-bottom: 8px;
+    }
+}
+
+.result-select {
+  padding: 20px 0;
+  @include flex(row, end, center, 0);
+}
+
+table {
+  border-collapse: collapse;
+}
+
+thead tr {
+  background-color: $clr-gray-30;
+
+  & > :first-child {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    padding: 7px 14px;
+    border-right: 1px solid $white;
+    width: 56px;
+
+    @include for-phone-only {
+      padding: 6px 17px;
+    }
+  }
+
+  & > :last-child {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    padding: 7px 16px;
+    @include for-phone-only {
+        padding: 4px 14px;
+      }
+  }
+}
+
+tbody tr {
+  &:not(:last-child) {
+    border-bottom: 1px solid $clr-line;
+  }
+
+  td {
+    padding: 16px 4px;
+
+        &:first-child {
+            padding: 16px 0 16px 2px;
+        }
+
+        &:nth-child(2) {
+            padding-left: 16px;
+        }
+
+        @include for-phone-only {
+            padding: 4px;
+        }
+    }
+
+    @include for-phone-only {
+      padding: 4px;
+    }
+  }
+
+.date-text {
+  @include font-params(14px, $clr-text-2, 400, 17.6px);
+
+  @include for-phone-only {
+    @include font-params(8px, $clr-text-2, 400, 17.6px);
+  }
+}
+
+.team-text {
+  @include font-params(14px, $clr-text-1, 400, 17.6px);
+
+  @include for-phone-only {
+    @include font-params(8px, $clr-text-2, 400, 17.6px);
+  }
+}
+
+.league-text {
+  @include font-params(14px, $clr-text-2, 600, 17.6px);
+  
+  @include for-phone-only {
+    @include font-params(8px, $clr-text-2, 600, 17.6px);
+  }
+}
+
+.league-country-flag {
+  img {
+    @media screen and (max-width: 1024px) {
+      width: 20px !important;
+    }
+  }
+}
+
+.win-text {
+  @include font-params(14px, $clr-text-1, 600, 17.6px);
+
+  @include for-phone-only {
+    @include font-params(8px, $clr-text-1, 600, 17.6px);
+  }
+}
+
+.mx-auto {
+  margin-inline: auto;
+}

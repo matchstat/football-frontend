@@ -1,0 +1,37 @@
+<div class="mb-20">
+<div class="section-header text-uppercase">{{title}} Goal Times</div>
+<div class="section-body">
+  <div class="goal-select">
+  <app-select-league
+    [leagues]="leagues"
+    [curLeague]="curLeague"
+    (selectedLeague)="selectLeague($event)"
+  ></app-select-league>
+  <app-select-range
+    [seasons]="seasons"
+    [curSeason]="curSeason"
+    (selectedSeason)="selectSeason($event)"
+  ></app-select-range>
+  </div>
+<div class="table">
+  <table class="w-100" *ngIf="list">
+    <thead>
+      <tr>
+        <th>Minute</th>
+        <th>Goals Scored</th>
+        <th>Goals Conseeded</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of list.period">
+        <td>{{item.minute}}</td>
+        <td>{{item.scoringCount}}<span>({{item.scoringPercent}}%)</span></td>
+        <td>{{item.concededCount}}({{item.concededPercent}}%)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  <app-not-stat *ngIf="!list" [title]="'Goal Times'"></app-not-stat>
+
+</div>
+</div>

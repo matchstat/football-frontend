@@ -1,0 +1,114 @@
+<div class="section">
+  <div class="section-header text-uppercase" *ngIf="!isLeague">{{ title }} Results</div>
+
+    <app-header-component
+    [title]="title +' Results'"
+    [hasSelectRange]="true"
+    [seasons]="seasons"
+    [curSeason]="seasonId"
+    (selectedSeason)="selectedSeason.emit($event)"
+    class="section-header"
+    *ngIf="isLeague"
+  ></app-header-component>
+
+  <div class="section-body" [class.league-table]="isLeague">
+    <div class="result-select" *ngIf="!isLeague">
+      <app-select-league
+        *ngIf="hasLeague"
+        [leagues]="leagues"
+        [curLeague]="leagueId"
+        (selectedLeague)="selectedLeague.emit($event)"
+      ></app-select-league>
+      <app-select-range
+        [seasons]="seasons"
+        [curSeason]="seasonId"
+        (selectedSeason)="selectedSeason.emit($event)"
+        *ngIf="hasSeason"
+      ></app-select-range>
+    </div>
+    <table class="w-100" *ngIf="results.length"> 
+      <thead>
+        <tr class="align-middle">
+          <td class="league-country-flag">
+            <img [src]="leagueInfo.country_flag" *ngIf="leagueInfo" alt="">
+          </td>
+          <td colspan="6">
+            <div class="league-text text-uppercase">
+              <span *ngIf="leagueInfo">{{leagueInfo.country}} / {{leagueInfo.name}} </span>
+              <span *ngIf="!leagueInfo">{{ selectedLeagueValue }}</span>
+            </div>
+          </td>
+        </tr>
+      </thead>
+      <tbody class="">
+        <tr
+          class="pointer"
+          *ngFor="let item of results"
+          (click)="navigateToH2h(item.homeTeam.id, item.awayTeam.id)"
+        >
+          <td class="date-text text-center">
+            {{ item.dateStart | date : "dd MMM" }}
+          </td>
+          <td class="">
+            <div class="mb-1">
+              <app-away-team
+                [ngClass]="
+                  (item?.homeTeam?.score ?? 0) > (item?.awayTeam?.score ?? 0)
+                    ? 'win-text'
+                    : 'team-text'
+                "
+                [away]="item.homeTeam.name"
+                [needSmallIcon]="true"
+                [awayEmblem]="item.homeTeam.logo_path"
+              ></app-away-team>
+            </div>
+            <div>
+              <app-away-team
+                [ngClass]="
+                  (item?.homeTeam?.score ?? 0) < (item?.awayTeam?.score ?? 0)
+                    ? 'win-text'
+                    : 'team-text'
+                "
+                [away]="item.awayTeam.name"
+                [needSmallIcon]="true"
+                [awayEmblem]="item.awayTeam.logo_path"
+              ></app-away-team>
+            </div>
+          </td>
+          <td class="d-flex align-items-center justify-content-between"><img src="assets/icons/divider.svg" style="height: 3em" />
+            <div><div
+              [ngClass]="{'win-text': (item?.homeTeam?.score ?? 0) > (item?.awayTeam?.score ?? 0),'date-text':(item?.homeTeam?.score ?? 0) <= (item?.awayTeam?.score ?? 0)}"
+            >
+              {{ item.homeTeam.score }}
+            </div>
+          <div
+               [ngClass]="{'win-text': (item?.homeTeam?.score ?? 0) < (item?.awayTeam?.score ?? 0),'date-text':(item?.homeTeam?.score ?? 0) >= (item?.awayTeam?.score ?? 0)}"
+            >
+              {{ item.awayTeam.score }}
+            </div></div>
+            <div class="match-result">
+              <div
+              [ngClass]="
+                checkStatus(item.homeTeam, item.awayTeam) === 'W'
+                  ? 'result-win'
+                  : checkStatus(item.homeTeam, item.awayTeam) === 'D' ? 'result-draw' :'result-loose'
+              "
+            >
+              {{ checkStatus(item.homeTeam, item.awayTeam)  }}
+            </div>
+            </div>
+            
+          <app-stats
+              (click)="$event.stopPropagation(); navigateToEvent(item.id)"
+            ></app-stats></td>
+        </tr>
+      </tbody>
+    </table>
+    <app-not-stat *ngIf="!results.length" [title]="'results'"></app-not-stat>
+  </div>
+  <app-more
+    *ngIf="results.length % 10 === 0 && results.length !== lastLength"
+    [loaderState]="loaderState"
+    (getMore)="getMore.emit()"
+  ></app-more>
+</div>

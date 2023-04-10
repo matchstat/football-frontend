@@ -1,0 +1,70 @@
+<div class="mb-20">
+<div class="section-header text-uppercase">Recently Played</div>
+<div class="block section-body" style="background:white;" *ngIf="hasResponse">
+  <ng-container >
+    <div class="mw-360">
+      <div class="recently-header"  *ngIf="listFirstSelected">
+        <div class=""><img [src]="firstTeamLogo" /></div>
+        <div class="league-text text-uppercase team-data">{{ listFirst?.name }}</div>
+      </div>
+      
+      <div class="table-grid">
+        <div
+          class="grid-item"
+          *ngFor="let item of listFirstSelected"
+          
+        >
+          <div class="pointer"><app-away-team
+          [away]="listFirst?.name"
+          [needSmallIcon]="true"
+          (click)="navigateToTeamPage(listFirst?.name)"
+        ></app-away-team>
+        <app-away-team
+          [away]="item?.opponent_name"
+          [needSmallIcon]="true"
+          (click)="navigateToTeamPage(item?.opponent_name)"
+        ></app-away-team></div>
+          <app-score *ngIf="item.scores.ft_score"  [score]="item.scores.ft_score"></app-score>
+        </div>
+      </div>
+    </div>
+    <div class="mw-360">
+      <div class="recently-header" *ngIf="listSecondSelected">
+        <div class=""><img [src]="secondTeamLogo" /></div>
+        <div class="league-text text-uppercase team-data">{{ listSecond?.name }}</div>
+      </div>
+      
+     
+      <div class="table-grid">
+        <div
+          class="grid-item pointer"
+          *ngFor="let item of listSecondSelected"
+          (click)="navigateToTeamPage(item.opponent_name)"
+        >
+          <div><app-away-team
+          [away]="listSecond?.name"
+          [needSmallIcon]="true"
+        ></app-away-team>
+        <app-away-team
+          [away]="item?.opponent_name"
+          [needSmallIcon]="true"
+        ></app-away-team></div>
+          <app-score *ngIf="item.scores.ft_score" class="score" [score]="item.scores.ft_score"></app-score>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<ng-container *ngIf="!hasResponse && !listFirstSelected && !listSecondSelected">
+  <app-not-stat [title]="'Recently Played'" class="not-data-found" ></app-not-stat>
+</ng-container>
+
+
+  <ng-container *ngIf="(listFirstSelected?.length !== listFirst?.latest?.length) && (listSecondSelected?.length !== listFirst?.latest?.length)">
+    <app-more
+        [loaderState]="loaderState"
+        (getMore)="getMoreResults()"
+      >
+    </app-more>
+  </ng-container>
+</div>

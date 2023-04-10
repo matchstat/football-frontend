@@ -1,0 +1,126 @@
+@import '../../../../styles/styles';
+
+
+.section-body {
+    padding-top: 20px;
+    @include for-phone-only {
+        padding-top: 10px;
+    }
+}
+
+.note-text {
+    font-size: 14px;
+    color: $clr-text-2;
+    font-weight: 400;
+    padding-top: 24px;
+    text-transform: capitalize;
+    
+        @include for-phone-only {
+            font-size: 8px;
+            padding-top: 12px;
+        }
+
+}
+
+.stats-left {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 32px;
+    padding: 8px 0;
+    border-bottom: 1px solid $clr-line;
+
+    &>:first-child {
+        font-size: 14px;
+        color: $clr-text-2;
+        font-weight: 400;
+
+        @include for-phone-only {
+            font-size: 8px;
+        }
+    }
+
+    &>:last-child {
+        font-size: 14px;
+        font-weight: 600;
+        color: $clr-text-1;
+
+        @include for-phone-only {
+            font-size: 8px;
+        }
+    }
+
+
+    @include for-phone-only {
+        margin-right: 16px;
+        padding: 3px 0;
+    }
+}
+
+.stats-right {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 32px;
+    padding: 8px 0;
+    border-bottom: 1px solid $clr-line;
+
+    &>:first-child {
+        font-size: 14px;
+        color: $clr-text-2;
+        font-weight: 400;
+
+        @include for-phone-only {
+            font-size: 8px;
+        }
+    }
+
+    &>:last-child {
+        font-size: 14px;
+        font-weight: 600;
+        color: $clr-text-1;
+
+        @include for-phone-only {
+            font-size: 8px;
+        }
+    }
+
+    @include for-phone-only {
+        margin-left: 16px;
+        padding: 3px 0;
+    }
+}
+
+table {
+    margin-bottom: 5px;
+
+    tr {
+        &>:first-child {
+            padding-left: 0 !important;
+            border-right: 1px dashed $clr-line !important;
+        }
+
+    }
+
+    tr:first-child td {
+
+        .stats-left,
+        .stats-right {
+            padding-top: 0 !important;
+        }
+    }
+
+    tr:last-child td {
+
+        .stats-left,
+        .stats-right {
+            padding-bottom: 0 !important;
+            border: none;
+        }
+    }
+
+    td {
+        width: 50%;
+        padding: 0;
+
+
+    }
+}

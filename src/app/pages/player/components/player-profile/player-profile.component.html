@@ -1,0 +1,117 @@
+<div class=" information-wrap__header profile-header mb-20">
+  <div class="header__top">
+    <div class="">
+          
+      <div class="image-container">
+        <!-- [src]="getImageUrl(generalInfo.venue.photo)" -->
+        <img
+          class="image"
+          [src]="player.image_path"
+          onerror="this.onerror=null; this.src='assets/images/noprofile.bmp'"
+          class="header__container-image"
+        />
+      </div>
+      <div class="d-flex align-items-center country-data" >
+        <img
+          [src]="player.birthplace.flag_image_path"
+          style="width: 22px; height: 1rem"
+        />
+        <p class="country-name mb-0 text-uppercase">
+          {{ player.birthplace.country }}
+        </p>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between flex-grow-1 name-container flex-wrap">
+      <div class="player-name">
+        {{ player?.fullName }}
+      </div>
+      <div class="d-flex justify-content-between">
+        <div class="best-rank pe-4 rank-data">
+          <div class="record__title">Ranking</div>
+          <div class="ranking--rank">
+            N/A
+          </div>
+        </div>
+        <div class="best-rank ps-4" style="padding-left: 20px">
+          <div class="record__title">Number</div>
+          <div class="player-name">N/A</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class=" score-data">
+    <div class="">
+      
+        <div class="record__title">Position</div>
+      
+
+      <div class="record__value">{{ player.position }}</div>
+    </div>
+    <div class="">
+      
+        <div class="record__title">Club Name</div>
+      
+
+      <div class="record__value">
+        {{ player.team.name }}
+      </div>
+    </div>
+    <div class="">
+      
+        <div class="record__title">Club League</div>
+     
+
+      <div class="record__value">
+       {{ player.team.name }}
+      </div>
+    </div>
+    <div class="">
+      
+        <div class="record__title">Club League Position</div>
+      
+
+      <div class="record__value">
+       {{ player.position }}
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<div class="h2h-with-wrapper mb-20">
+  <button class="btn btn-player">H2H With</button>
+        <app-search
+          [isMenu]="true"
+          placeholder="Search Player"
+          [showBorder]="true"
+          [size]="'short'"
+          [isDebounce]="true"
+          class="w-100 search"
+  ></app-search>
+</div>
+
+
+<div class="card mb-20">
+  <div class="card-body">
+      <div class="card-item">
+        <span class="left">Age</span>
+        <span class="right"
+          >{{ player.age }} ({{ player.birthdate | date: "dd-MM-yyyy" }})</span
+        >
+      </div>
+      <div class="card-item">
+        <span class="left">Birthplace</span>
+        <span class="right"
+          >{{ player.birthplace.city }}, {{ player.birthplace.country }}</span
+        >
+      </div>
+      <div class="card-item">
+        <span class="left">Height</span>
+        <span class="right">{{ player.height }}</span>
+      </div>
+      <div class="card-item">
+        <span class="left">Weight</span>
+        <span class="right">{{ player.weight }}</span>
+      </div>
+    </div>
+</div>

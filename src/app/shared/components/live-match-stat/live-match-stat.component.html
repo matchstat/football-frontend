@@ -1,0 +1,22 @@
+<div class="section">
+  <h2 class="section-header"><span class="live">Live</span> Match Stats</h2>
+
+  <div class="section-body">
+    <table>
+      <thead>
+        <tr>
+          <th>Performance Summary</th>
+          <th>{{ matchData?.localTeam?.name }}</th>
+          <th>{{ matchData?.visitorTeam?.name }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of list">
+          <td>{{ item.performance }}</td>
+          <td>{{ item.home }}</td>
+          <td>{{ item.away }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

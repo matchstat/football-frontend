@@ -1,0 +1,149 @@
+@import "../../../../styles/mixins";
+@import "../../../../styles/variables";
+
+.substitution {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  // justify-content: space-between !important;
+
+  @include for-phone-only {
+    gap: 5px;
+  }
+}
+
+.match-end {
+  @include font-params(16px,$clr-text-1,600,normal);
+  @include for-phone-only {
+    
+  } 
+}
+
+.section-body {
+  padding-top: 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  tr.table-header {
+      text-transform: uppercase;
+      text-align: right;
+      background: $clr-gray-30;
+      position: relative;
+      @include font-params(14px, $clr-text-2, 600, 1rem);
+      @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        font-size: 10px;
+      }
+      @include for-phone-only {
+        font-size: 0.5rem;
+      }
+
+      & > * {
+        padding: 7px 14px;
+      }
+
+      .table-header {
+        &-title {
+          text-align: left;
+          border-top-left-radius: 6px;
+          border-bottom-left-radius: 6px;
+        }
+        &-value {
+          font-weight: 400;
+          border-top-right-radius: 6px;
+          border-bottom-right-radius: 6px;
+        }
+      }
+
+      & > td::before {
+        content: '';
+        position: absolute;
+        top: -10%;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-color: #fff;
+      }
+  }
+
+  tbody {
+    tr {
+      .home,
+      .home-minute {
+        text-align: left;
+        padding-inline: 0;
+        @include for-phone-only {
+          padding-inline: 5px;
+        }
+      }
+
+      .away,
+      .away-minute {
+        text-align: right;
+        padding-inline: 0;
+        @include for-phone-only {
+          padding-inline: 5px;
+        }
+      }
+
+      .home-minute {
+        padding-left: 14px;
+      }
+      .away-minute {
+        padding-right: 14px;
+      }
+
+      .home,
+      .away {
+        .substitution,
+        .red-card,
+        .yellow-card,
+        .goal,
+        .own-goal {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      td:is(.home, .away) {
+        width: 40%;
+      }
+    }
+
+    td {
+      padding: 0.75rem;
+      @include font-params(14px, $clr-text-1, 600, 18px);
+      @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        padding: 0.5rem;
+        font-size: 10px;
+      }
+      @include for-phone-only {
+        padding: 0.25rem 0;
+        font-size: 0.5rem;
+        line-height: 1.4;
+      }
+    }
+
+    td:is(.home, .home-minute, .away, .away-minute) {
+      border-bottom: 1px solid $clr-line;
+    }
+  }
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  @include for-phone-only {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+}

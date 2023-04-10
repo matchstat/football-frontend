@@ -1,0 +1,161 @@
+<div class="section">
+  <app-header-component
+    class="section-header"
+    title="Lineups"
+  ></app-header-component>
+
+  <div class="section-body">
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr class="team">
+            <th style="width: 10%" class="team-logo-container">
+              <div class="team-logo">
+                <img [src]="matchData?.localTeam?.logo_path" />
+              </div>
+            </th>
+            <th colspan="2" class="team-name">
+              {{ matchData?.localTeam?.name }}
+            </th>
+            <th colspan="2" class="team-formation">
+              {{ matchData?.formations?.localteam_formation }}
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr
+            class="home-team"
+            *ngFor="let item of lineups?.slice(0, 11); let i = index"
+          >
+            <td>{{ item.number }}</td>
+            <td>{{ item.player_name }}</td>
+            <td colspan="3" class="custom-flag-cards">
+              <div>
+                <ng-container *ngIf="item.stats.goals.scored">
+                  <div class="icon">
+                    <img src="assets/icons/goal.svg" alt="" />
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="item.stats.cards?.yellowcards">
+                  <div class="icon">
+                    <img src="assets/icons/yellow-card.svg" alt="" />
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="item.stats.cards?.redcards">
+                  <div class="icon">
+                    <img src="assets/icons/red-card.svg" alt="" />
+                  </div>
+                </ng-container>
+              </div>
+            </td>
+          </tr>
+          
+        </tbody>
+      </table>
+
+      <table>
+        <thead>
+          <tr class="team">
+            <th style="width: 10%" class="team-logo-container">
+              <div class="team-logo">
+                <img [src]="matchData?.visitorTeam?.logo_path" />
+              </div>
+            </th>
+            <th colspan="3" class="team-name">
+              {{ matchData?.visitorTeam?.name }}
+            </th>
+            <th colspan="1" class="team-formation">
+              {{ matchData?.formations?.visitorteam_formation }}
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr
+            class="away-team"
+            *ngFor="let item of lineups?.slice(11, 22); let i = index"
+          >
+            <td colspan="3" class="custom-flag-cards">
+              <div>
+                <ng-container *ngIf="item.stats.goals.scored">
+                  <div class="icon">
+                    <img src="assets/icons/goal.svg" alt="" />
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="item.stats.cards?.yellowcards">
+                  <div class="icon">
+                    <img src="assets/icons/yellow-card.svg" alt="" />
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="item.stats.cards?.redcards">
+                  <div class="icon">
+                    <img src="assets/icons/red-card.svg" alt="" />
+                  </div>
+                </ng-container>
+              </div>
+            </td>
+            <td>{{ item.player_name }}</td>
+            <td>{{ item.number }}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>
+
+    <h3 *ngIf="localTeamBench">Change</h3>
+    <div class="table-container">
+      <table>
+        <tbody>
+          <tr class="home-team" *ngFor="let item of localTeamBench">
+            <td>{{ item.number }}</td>
+            <td>{{ item.player_name }}</td>
+            <td colspan="2" class="custom-flag-cards">
+              <div>
+                <ng-container *ngIf="item.stats.goals.scored">
+                  <div class="icon">
+                    <img src="assets/icons/goal.svg" alt="" />
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="item.stats.cards?.yellowcards">
+                  <div class="icon">
+                    <img src="assets/icons/yellow-card.svg" alt="" />
+                  </div>
+                </ng-container>
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="!localTeamBench">
+           <app-not-stat [title]="'Lineups'"></app-not-stat>
+          </tr>
+        </tbody>
+      </table>
+
+      <table>
+        <tbody>
+          <tr class="away-team" *ngFor="let item of visitorTeamBench">
+            <td colspan="2" class="custom-flag-cards">
+              <div>
+                <ng-container *ngIf="item.stats.goals.scored">
+                  <div class="icon">
+                    <img src="assets/icons/goal.svg" alt="" />
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="item.stats.cards?.yellowcards">
+                  <div class="icon">
+                    <img src="assets/icons/yellow-card.svg" alt="" />
+                  </div>
+                </ng-container>
+              </div>
+            </td>
+            <td>{{ item.player_name }}</td>
+            <td>{{ item.number }}</td>
+          </tr>
+          <tr *ngIf="!visitorTeamBench">
+           <app-not-stat [title]="'Lineups'"></app-not-stat>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

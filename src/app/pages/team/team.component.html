@@ -1,0 +1,46 @@
+<div class="layout">
+  <div class="layout-main">
+    <ng-container *ngIf="team; else teamEmpty">
+      <app-team-profile></app-team-profile>
+      <app-upcoming-match
+        [teamName]="team.name"
+      ></app-upcoming-match>
+      <app-fixtures [title]="team.name"></app-fixtures>
+      <app-results [title]="team.name"></app-results>
+      <app-competition-standing
+        [seasonId]="team.seasonId"
+        [leagueId]="team.leagueId"
+        class="mb-20"
+      ></app-competition-standing>
+      <app-performance-summary
+        class="mb-20"
+        [title]="team.name"
+      ></app-performance-summary>
+      <app-goal-times class="mb-20" [title]="team.name"></app-goal-times>
+      <app-season-match-stats class="mb-20" [title]="team.name"></app-season-match-stats>
+      <app-total-match-goals class="mb-20" [title]="team.name"></app-total-match-goals>
+      <app-team-player-stats
+        [title]="team.name"
+        [teamId]="team.id"
+        [coachShow]="true"
+        [seasonId]="team.seasonId"
+        class="mb-20"
+      ></app-team-player-stats>
+      <app-team-interesting-h2h class="mb-20"></app-team-interesting-h2h>
+      <app-search-h2h class="team-search mb-20"></app-search-h2h>
+    </ng-container>
+    <ng-template #teamEmpty>
+      <div *ngIf="!loading">
+        <h1 class="font-weight-bold text-center">Team not found!</h1>
+      </div>
+
+      <div *ngIf="loading">
+        <h1 class="font-weight-bold text-center">Team is loading...</h1>
+      </div>
+    </ng-template>
+  </div>
+  <div class="layout-aside">
+    <app-interesting-h2h class="mb-30"></app-interesting-h2h>
+    <app-live-events></app-live-events>
+  </div>
+</div>

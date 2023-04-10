@@ -1,0 +1,16 @@
+@import "../../../../styles/styles.scss";
+
+.no-data-header {
+  background-color: $white;
+  text-align: center;
+  text-transform: capitalize;
+
+  &.add-padding {
+    padding: 1rem 0;
+  }
+  @include font-params(16px, $clr-text-2, 600, 1.5rem);
+
+  @include for-phone-only {
+    font-size: 12px;
+  }
+}

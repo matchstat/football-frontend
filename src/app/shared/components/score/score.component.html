@@ -1,0 +1,19 @@
+<div class="score">
+  <img src="assets/icons/divider.svg" style="height: 3em" />
+  <div>
+    <div  [class.score-win]="score.split('-')[0] > score.split('-')[1]"
+       [class.score-lost]="score.split('-')[0] <= score.split('-')[1]">{{score.split('-')[0]}}</div>
+    <div [class.score-win]="score.split('-')[0] < score.split('-')[1]"
+       [class.score-lost]="score.split('-')[0] >= score.split('-')[1]">{{score.split('-')[1]}}</div>
+  </div>
+  <div class="match-result">
+    <div
+      [class.result-win]="result && result > 0"
+       [class.result-draw]="result === 0"
+       [class.result-loose]="result && result < 0"
+        
+      >
+        {{result && result > 0 ? 'W' : result === 0 ? 'D' : 'L' }}
+    </div>
+  </div>
+</div>

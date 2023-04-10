@@ -1,0 +1,55 @@
+// FONTS
+$font-primary: "Source Sans Pro", sans-serif;
+
+// COLORS
+$black: #21272a;
+$white: #ffffff;
+$light-blue: #00b1ff;
+$hover-blue:#4E73F4;
+
+$clr-primary: #193050;
+$clr-accent: #3a63f3;
+
+$clr-text-1: #12253d;
+$clr-text-2: #697077;
+
+$clr-icon: #b1b6d1;
+
+$clr-line: #dde1e6;
+
+$win: #2bd299;
+$draw: #ffcb2e;
+$lost: #f33c59;
+
+$clr-gray-10: #f4f7f9;
+$clr-gray-20: #f5f7f9;
+$clr-gray-30: #e5ebf1;
+
+// BOX SHADOWS
+$box-shadow-10: 0px 1px 1px rgba(11, 15, 50, 0.06);
+$box-shadow-20: 0px 8px 15px rgba(26, 49, 80, 0.14);
+
+$bg-gradient: linear-gradient(
+  90deg,
+  #dfe7ee -56%,
+  rgba(223, 231, 238, 0.18894) 32.51%,
+  rgba(223, 231, 238, 0.04) 48.76%,
+  rgba(223, 231, 238, 0.188462) 68.24%,
+  #dfe7ee 174.74%
+);
+
+$bg-gradient-dark: linear-gradient(
+  358.76deg,
+  #0f2443 35.59%,
+  rgba(26, 49, 80, 0) 126.41%
+);
+
+$bg-gradient-light: linear-gradient(
+  180deg,
+  rgba(255, 255, 255, 0) -2.7%,
+  rgba(255, 255, 255, 0.4) 30.58%,
+  rgba(255, 255, 255, 0) 87.29%
+);
+
+// BREAKPOINTS
+$mobileExtension: 360px;

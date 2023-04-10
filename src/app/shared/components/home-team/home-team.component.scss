@@ -1,0 +1,29 @@
+@import "../../../../styles/mixins";
+
+.home {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  line-height: 1.2;
+
+  @include for-phone-only {
+    gap: 4px;
+  }
+}
+
+.small-icon {
+  max-height: 18px !important;
+
+  @include for-phone-only {
+    max-height: 12px !important;
+  }
+}
+
+.image {
+  max-height: 32px;
+
+  @include for-phone-only {
+    max-height: 14px;
+  }
+}

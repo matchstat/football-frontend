@@ -1,0 +1,149 @@
+@import "../../../../styles/styles.scss";
+.table{
+  width: 100%;
+  // color: #212529;
+  vertical-align: top;
+  border-color: #dee2e6;
+  border-collapse: collapse;
+}
+
+thead tr {
+  background-color: $clr-gray-30;
+  &>:first-child{
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    padding: 7px 14px;
+    border-right: 1px solid $white;
+    width:56px;
+     @include for-phone-only {
+      padding: 6px 17px;
+    }
+  }
+  &>:last-child {
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+      padding: 7px 16px;
+       @include for-phone-only {
+        padding: 4px 14px;
+      }
+    }
+}
+
+app-stats{
+  ::ng-deep .stats
+  {
+    align-items: flex-end;
+  }
+}
+
+tbody tr{
+  &:not(:last-child) {
+      border-bottom: 1px solid $clr-line    }
+            
+  
+    
+    td {
+        padding: 16px 8px;
+        &:first-child {
+          padding: 16px 0 16px 2px;
+        }
+        &:nth-child(2) {
+            padding-left: 16px;
+          }
+        @include for-phone-only {
+          padding: 6px;
+        }
+      }
+  
+}
+
+.date-text {
+  @include font-params(14px,$clr-text-2,400,normal);
+  @include for-phone-only {
+      @include font-params(8px, $clr-text-2, 400, normal)
+    }
+}
+
+.team-text {
+  @include font-params(14px, $clr-text-1, 400, normal);
+  @include for-phone-only {
+      @include font-params(8px, $clr-text-1, 400, normal)
+    }
+}
+
+.league-text {
+  @include font-params(14px, $clr-text-2, 600, 17.6px);
+  @include for-phone-only {
+      @include font-params(8px, $clr-text-2, 600, 17.6px)
+  }
+}
+
+app-not-stat {
+  ::ng-deep .no-data-header {
+    padding-bottom: 16px;
+
+    @include for-phone-only {
+      padding-bottom: 8px;
+    }
+  }
+}
+
+.section-body {
+  border-radius: 0;
+  padding-bottom: 16px;
+  @include for-phone-only {
+    padding-bottom: 8px;
+  }
+}
+
+.fixture-select {
+  padding: 20px 0;
+  @include flex(row,end,center,0)
+}
+
+
+.fixture-country-flag {
+  img {
+    @media screen and (max-width: 1024px) {
+      width: 20px !important;
+    }
+  }
+}
+
+
+
+
+app-header-component {
+  margin-bottom: 14px;
+
+  @include for-phone-only {
+    margin-bottom: 9px;
+  }
+}
+
+.date {
+  line-height: 1.2;
+}
+
+.home-title {
+  text-align: right;
+  margin-right: 31px;
+
+  @include for-phone-only {
+    margin-right: 4px;
+  }
+}
+
+.away-title {
+  margin-left: 20px;
+
+  @include for-phone-only {
+    margin-right: 4px;
+  }
+}
+
+.table-grid {
+  @include for-phone-only {
+    padding-bottom: 4px;
+  }
+}

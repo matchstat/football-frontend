@@ -1,0 +1,340 @@
+@import "../../../../styles/styles.scss";
+
+.upcoming-header {
+  color: $white;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  padding: 28px 0;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  background: $clr-primary;
+
+  @include for-phone-only {
+    font-size: 14px;
+    padding: 14px 0;
+  }
+}
+
+.match-result {
+  margin-top:0 !important;
+}
+
+app-not-stat{
+  ::ng-deep  .no-data-header {
+  padding: 28px 0;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  @include for-phone-only {
+      padding: 14px 0;
+  }
+}
+}
+
+.upcoming-description {
+  background: #E5EBF1;
+  border-bottom-left-radius: .5rem;
+  border-bottom-right-radius: .5rem;
+  padding-bottom: 32px;
+
+  .text-view {
+    font-weight: 400;
+    font-size: 14px;
+    color: $clr-accent;
+    line-height: 18px;
+    &:hover {
+      color: $hover-blue;
+    }
+  }
+
+  .upcoming-head {
+    display: flex;
+    justify-content: space-between;
+    max-width: 600px;
+    padding: 24px;
+    margin: 0 auto;
+
+    @media (max-width:500px) {
+      flex-direction: column;
+      padding: 12px;
+      gap: 1rem;
+    }
+
+    .team-width {
+      width:120px;
+    }
+
+    .match-info {
+      display: flex;
+      flex-direction: column;
+      align-self: flex-end;
+      align-items: center;
+      font-weight: 600;
+      font-size: 16px;
+      color: $clr-primary;
+
+      @media (max-width:768px) {
+        font-size: 10px;
+      }
+
+      @media (max-width:500px) {
+        align-self: center;
+      }
+
+      .match-header {
+        text-transform: uppercase;
+        img {
+          width:50px;
+          height: 50px;
+          @include for-phone-only {
+            width: 35px;
+            height: 35px;
+          }
+        }
+        @include flex(row,center,center,.5rem)
+      }
+
+      .team-logo {
+        width: 80px;
+        height: 80px;
+        overflow: hidden;
+        // margin-bottom: 12px;
+        object-fit: contain;
+        @include for-phone-only {
+          width: 50px;
+          height: 50px;
+        }
+      }
+
+      .match-team {
+        font-weight: 600;
+        font-size: 18px;
+        color: $clr-primary;
+        margin-top: 10px;
+        text-align: center;
+        line-height: normal;
+
+        @media (max-width:768px) {
+          font-size: 12px;
+        }
+      }
+
+      .match-name {
+        font-weight: 400;
+        font-size: 14px;
+      }
+
+      .match-result {
+
+        margin-top: 9px;
+
+        :not(:first-child) {
+          margin-left: -6px;
+        }
+
+        .results {
+          font-weight: 700;
+          font-size: 10px;
+          line-height: 7px;
+          text-align: center;
+          color: $white;
+          border-radius: 50%;
+          padding: 6px 5px 5px 5px;
+          border: 2px solid $clr-gray-30;
+
+          &--win {
+            background-color: $win;
+          }
+
+          &--lose {
+            background-color: $lost;
+          }
+        }
+      }
+
+      .match-time {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 32px 0 8px;
+
+        .text-day {
+          font-weight: 400;
+          color: $clr-text-2;
+        }
+      }
+
+      .match-point {
+        margin-top: 60px;
+        padding: 10px 30px;
+        border-radius: 8px;
+        background-color: $white;
+        line-height: normal;
+
+        @media (max-width:500px) {
+          margin-top: 10px;
+          padding: 8px 20px;
+        }
+      }
+    }
+  }
+}
+
+
+
+app-header-component {
+  margin-bottom: 16px;
+  @include for-phone-only {
+    margin-bottom: 0;
+  }
+}
+.coming-match {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 18px auto 0;
+
+  @include for-phone-only {
+    max-width: 253px;
+    margin-top: 28px;
+  }
+}
+
+.teams {
+  display: flex;
+  justify-content: space-between;
+}
+
+.emblem {
+  max-height: 105px;
+  max-width: 105px;
+  display: flex;
+  align-items: flex-end;
+
+  img {
+    max-height: 105px;
+    max-width: 105px;
+  }
+
+  @include for-phone-only {
+    max-height: 46px;
+    max-width: 46px;
+
+    img {
+      max-height: 46px;
+      max-width: 46px;
+    }
+  }
+}
+
+.home,
+.away,
+.league {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 600;
+}
+
+.name {
+  margin-top: 16px;
+  margin-bottom: 20px;
+
+  @include for-phone-only {
+    margin-top: 6px;
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+}
+
+.date {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+
+  @include for-phone-only {
+    margin-top: 6px;
+    gap: 0;
+    font-size: 10px;
+    line-height: 14px;
+  }
+}
+
+.match-left {
+  padding: 20px 15px 15px;
+  background: #F1F2F5;
+  border-radius: 6px;
+  margin: 32px auto 45px;
+  display: flex;
+  gap: 20px;
+
+
+  @include for-phone-only {
+    padding: 6px 14px 7px 15px;
+    margin: 16px auto 20px;
+    gap: 24px;
+  }
+}
+
+.times {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &:first-child {
+    margin-right: 5px;
+  }
+}
+
+.number {
+  @include font-params(21px, #181818, 400, 27px);
+  font-family: 'Digital Normal', sans-serif;
+
+  @include for-phone-only {
+    font-size: 13px;
+    line-height: 16px;
+    margin-bottom: 4px;
+  }
+}
+
+.unit {
+  font-weight: 600;
+
+  @include for-phone-only {
+    font-size: 12px;
+  }
+}
+
+.btn-primary {
+  margin: 0 auto;
+  width: 256px;
+  font-weight: 600;
+
+  @include for-phone-only {
+    width: 175px;
+    font-size: 13px;
+  }
+}
+
+.percent {
+  padding: 2px 0;
+  width: 62px;
+  text-align: center;
+  color: #FFFFFF;
+  border: none;
+  font-size: 14px;
+
+  @include for-phone-only {
+    width: 31px;
+    font-size: 10px;
+  }
+
+  &-green {
+    background: #019633;
+  }
+
+  &-orange {
+    background: #C99E57;
+  }
+}

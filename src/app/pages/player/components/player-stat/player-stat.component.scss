@@ -1,0 +1,130 @@
+@import "../../../../../styles/styles";
+
+.player-select {
+  padding: 20px 0 15px;
+  @include flex(row, end, center, 0);
+
+  @include for-phone-only {
+    padding: 10px 0 7px;
+  }
+}
+
+.stats-left {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 32px;
+  padding: 8px 0;
+  border-bottom: 1px solid $clr-line;
+
+  &>:first-child {
+      font-size: 14px;
+      color: $clr-text-2;
+      font-weight: 400;
+      @include for-phone-only {
+          font-size: 8px;
+        }
+    }
+  
+  &>:last-child {
+    font-size: 14px;
+    font-weight: 600;
+    color: $clr-text-1;
+    @include for-phone-only {
+        font-size: 8px;
+      }
+  }
+
+
+  @include for-phone-only {
+    margin-right: 16px;
+    padding: 3px 0;
+  }
+}
+
+.stats-right {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 32px;
+  padding: 8px 0;
+  border-bottom: 1px solid $clr-line;
+
+  &>:first-child {
+    font-size: 14px;
+    color: $clr-text-2;
+    font-weight: 400;
+    @include for-phone-only {
+      font-size: 8px;
+    }
+  }
+  
+  &>:last-child {
+    font-size: 14px;
+    font-weight: 600;
+    color: $clr-text-1;
+    @include for-phone-only {
+        font-size: 8px;
+    }
+  }
+
+  @include for-phone-only {
+    margin-left: 16px;
+    padding: 3px 0;
+  }
+}
+
+
+
+
+app-header-component {
+  margin-bottom: 14px;
+
+  @include for-phone-only {
+    margin-bottom: 11px;
+  }
+}
+
+table {
+  margin-bottom: 5px;
+
+  tr {
+      &>:first-child {
+        padding-left: 0 !important;
+        border-right: 1px dashed $clr-line !important;
+      }
+  
+    }
+  
+    tr:first-child td {
+  
+      .stats-left,
+      .stats-right {
+        padding-top: 0 !important;
+      }
+    }
+  
+    tr:last-child td {
+  
+      .stats-left,
+      .stats-right {
+        padding-bottom: 0 !important;
+        border: none;
+      }
+    }
+
+  td {
+    width: 50%;
+    padding: 0;
+
+    
+  }
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
+
+  @include for-phone-only {
+    margin: 0 10px;
+  }
+}

@@ -1,0 +1,31 @@
+@import "../mixins";
+@import "../variables";
+.sidebar {
+  border-radius: 6px;
+  background: $white;
+  box-shadow: $box-shadow-10;
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+
+  &-header {
+    padding: 1rem;
+    background: $clr-primary;
+    display: flex;
+    align-items: center;
+
+    h2 {
+      @include font-params(1rem, $white, 600, 1rem);
+      @include for-phone-only {
+        font-size: 10px;
+      }
+
+      span {
+        color: #f33c59;
+      }
+    }
+  }
+
+  &-body {
+    padding: 20px;
+  }
+}

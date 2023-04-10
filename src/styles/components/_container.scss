@@ -1,0 +1,21 @@
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+
+  &-left {
+    display: flex;
+    gap: 40px;
+  }
+
+  @include for-phone-only {
+    max-width: 500px;
+
+    &-left {
+      gap: 10px;
+    }
+  }
+
+  @media (max-width: 516px) {
+    margin: 0 8px;
+  }
+}

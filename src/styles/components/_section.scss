@@ -1,0 +1,64 @@
+@import "../mixins";
+@import "../variables";
+
+.section {
+  box-shadow: $box-shadow-10;
+  margin-bottom: 1.25rem;
+
+  &-header,
+  &-header-dark {
+    padding: 28px 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    @include font-params(1.25rem, $clr-text-1, 600, 1.5rem);
+  }
+
+  &-header {
+    background: $bg-gradient;
+  }
+
+  &-header-dark {
+    color: $white;
+    background: $clr-primary;
+  }
+
+  &-body {
+    background: $white;
+    padding: 0 2rem 2rem;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+  }
+
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    &-header,
+    &-header-dark {
+      font-size: 1rem;
+    }
+  }
+
+  @include for-phone-only {
+    &-header,
+    &-header-dark {
+      padding: 14px 0;
+      font-size: 14px;
+    }
+
+    &-body {
+      padding: 0 1rem 1rem;
+    }
+  }
+}
+
+.viewmore-section {
+  padding: 20px 0;
+  background: white;
+  border-top: 1px dashed $clr-line;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  @include flex(row, center, center, 10px);
+  @include for-phone-only {
+    padding: 10px 0;
+  }
+}

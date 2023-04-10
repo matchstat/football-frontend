@@ -1,0 +1,119 @@
+@import "../../../../styles/styles";
+
+app-header-component {
+  margin-bottom: 19px;
+
+  @include for-phone-only {
+    margin-bottom: 0;
+  }
+}
+
+.h2h-text {
+  @include font-params(14px, $clr-text-2, 600, 17.6px);
+
+  @include for-phone-only {
+    @include font-params(8px, $clr-text-2, 600, 17.6px);
+  }
+}
+
+app-team {
+  ::ng-deep .team {
+      gap: 8px !important;
+    }
+}
+
+
+.card {
+  padding: 16px 0 14px;
+  width: 100%;
+  font-size: 14px;
+  // &:first-child {
+  //   
+  // }
+
+  @include for-phone-only {
+    padding: 8px 0 7px;
+    font-size: 8px;
+  }
+
+
+  &-item {
+
+    // padding: 14px 23px 15px 16px;
+    justify-content: space-between;
+
+    @include for-phone-only {
+      // padding: 4px 0 2px;
+    }
+  }
+}
+.h2h-intresting-container {
+  column-count: 2;
+  column-gap: 64px;
+    background-color: $white;
+    position: relative;
+  
+    @include for-phone-only {
+      column-gap: 32px;
+    }
+  
+    &::before {
+      content: '';
+      position: absolute;
+      top: 24px;
+      // bottom: 32px;
+      right: 50%;
+      width: 1px;
+      border: 1px dashed $clr-line;
+      height: calc(100% - 26px);
+  
+      // @include for-phone-only {
+      //   height: calc(100% - 40px);
+      // }
+    }
+}
+
+.container {
+  column-count: 2;
+  column-gap: 40px;
+}
+
+.item {
+  flex: 50%;
+  font-size: 16px;
+  border-bottom: 1px solid #DDE1E6;
+
+  &.padding-data,
+  &:first-child {
+    .card {
+      padding: 24px 0 14px !important;
+
+      @include for-phone-only {
+        padding: 12px 0 7px !important;
+      }
+    }
+  }
+
+  &.border-less-item,
+  &:last-child {
+    border-color: transparent;
+
+    .card {
+      padding: 16px 0 0 0 !important;
+
+      @include for-phone-only {
+        padding: 8px 0 0 !important;
+      }
+    }
+
+  }
+}
+
+app-not-stat {
+  ::ng-deep .no-data-header {
+    padding-top: 24px;
+    @include for-phone-only {
+      padding-top: 12px;
+    }
+  }
+}

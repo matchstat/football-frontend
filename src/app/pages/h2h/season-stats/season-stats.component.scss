@@ -1,0 +1,123 @@
+@import "../../../../styles/styles";
+
+.season-stat-select {
+  padding: 20px 0;
+  @include flex(row, end, center, 0);
+
+  @include for-phone-only {
+    padding: 10px 0;
+  }
+}
+
+.select-last {
+  margin-right: auto;
+  padding: 0;
+  margin-left: 0;
+}
+
+table {
+  th {
+    padding: 0 0 21px 0 !important;
+
+    @include for-phone-only {
+      padding: 0 !important;
+    }
+  }
+
+  tr {
+    border-bottom: 1px solid $clr-line;
+  }
+}
+
+.bottom-border {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+thead tr {
+  text-transform: uppercase;
+
+  &>:first-child {
+    padding-left: 0 !important;
+    @include font-params(12px, $clr-text-2, 600, 15px);
+
+    @include for-phone-only {
+      @include font-params(8px, $clr-text-2, 600, 15px);
+    }
+  }
+
+  &>:not(:first-child) {
+    text-align: left;
+    padding-left: 32px !important;
+
+    @include font-params(12px, $clr-accent, 600, 15px);
+
+    @include for-phone-only {
+      padding-left: 16px !important;
+      @include font-params(8px, $clr-accent, 600, 15px);
+    }
+  }
+}
+
+tbody tr {
+  &>:first-child {
+    padding-left: 0 !important;
+    @include font-params(14px, $clr-text-2, 400, 32px);
+
+    @include for-phone-only {
+      @include font-params(8px, $clr-text-2, 400, 16px);
+    }
+  }
+
+  &>:not(:first-child) {
+    text-align: left;
+    padding-left: 32px !important;
+    font-size: 14px;
+
+
+
+    span {
+        color: $clr-accent;
+      }
+
+    @include for-phone-only {
+      padding-left: 16px !important;
+      font-size: 8px;
+    }
+  }
+}
+
+.season-container
+{
+  background-color: $white;
+  padding: 20px 32px 32px;
+  margin-bottom: 20px;
+  box-shadow: 0px 1px 1px rgba(11, 15, 50, 0.06);
+  @include for-phone-only {
+    padding: 10px 16px 16px;
+  }
+}
+
+.sub-header{
+  td {
+    padding: 10px 0 !important;
+      @include font-params(12px, $clr-text-2, 400, 15.08px);
+    
+      @include for-phone-only {
+        padding: 5px 0 !important;
+        @include font-params(8px, $clr-text-2, 400, 15.08px);
+      }
+  }
+}
+
+.sub-right {
+  padding-right: 32px !important;
+  padding-left: 0 !important;
+  text-align: end;
+}
+
+.t-summary {
+  width: 37%;
+}
+
+

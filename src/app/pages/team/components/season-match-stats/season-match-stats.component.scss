@@ -1,0 +1,93 @@
+@import "../../../../../styles/styles";
+
+.stats-left {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 32px;
+  padding: 17px 0 13px;
+  border-bottom: 1px solid $clr-line;
+  
+
+  @include for-phone-only {
+    margin-right: 16px;
+    padding: 8px 0 6px;
+  }
+}
+.stats-right {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 32px;
+  padding: 17px 0 13px;
+  border-bottom: 1px solid $clr-line;
+
+  @include for-phone-only {
+    margin-left: 16px;
+    padding: 8px 0 6px;
+  }
+}
+
+.head-text {
+  @include font-params(14px, $clr-text-2, 400, 16px);
+
+  @include for-phone-only {
+    @include font-params(8px, $clr-text-2, 400, 16px);
+  }
+}
+
+.data-text {
+  @include font-params(14px, $clr-text-1, 600, 16px);
+
+  @include for-phone-only {
+    @include font-params(8px, $clr-text-1, 600, 16px);
+  }
+}
+
+.season-select {
+  padding: 20px 0;
+  @include flex(row, end, center, 0);
+
+  @include for-phone-only {
+    padding: 10px 0;
+  }
+}
+
+app-header-component {
+  margin-bottom: 14px;
+
+  @include for-phone-only {
+    margin-bottom: 11px;
+  }
+}
+
+table {
+  tr {
+    &>:first-child  {
+      padding-left: 0 !important;
+      border-right: 1px dashed $clr-line !important;
+    }
+    
+  }
+  tr:first-child td {
+    
+      .stats-left,.stats-right {
+        padding-top: 0 !important;
+      }
+    }
+  tr:last-child td {
+    .stats-left,.stats-right {
+      padding-bottom: 0 !important;
+      border:none;
+    }
+  }
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
+
+  @include for-phone-only {
+    margin: 0 10px;
+  }
+
+}

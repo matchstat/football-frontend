@@ -1,0 +1,73 @@
+@import "../../../../styles/mixins";
+@import "../../../../styles/variables";
+
+.live {
+  color: #d22365;
+}
+
+.section-body {
+  padding-top: 1.5rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+
+  thead {
+    tr {
+      :first-child {
+        color: $clr-text-2;
+      }
+      :not(:first-child) {
+        padding-left: 2rem;
+        @include for-phone-only {
+          padding-left: 1rem;
+        }
+      }
+    }
+
+    th {
+      padding-bottom: 1.25rem;
+      text-transform: uppercase;
+      @include font-params(0.75rem, $clr-accent, 600, 1rem);
+      @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        font-size: 10px;
+      }
+      @include for-phone-only {
+        line-height: 1.2;
+        font-size: 0.5rem;
+        padding-bottom: 0.75rem;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      :first-child {
+        font-weight: 400;
+        border-left: none;
+        color: $clr-text-2;
+      }
+      :not(:first-child) {
+        padding-left: 2rem;
+      }
+      :last-child {
+        border-right: none;
+      }
+    }
+
+    td {
+      padding: 10px 0;
+      border: 1px solid $clr-line;
+      @include font-params(14px, $clr-text-1, 600, 1rem);
+      @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        font-size: 10px;
+      }
+      @include for-phone-only {
+        padding: 0.25rem 0;
+        font-size: 0.5rem;
+      }
+    }
+  }
+}

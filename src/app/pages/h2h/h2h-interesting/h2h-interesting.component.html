@@ -1,0 +1,42 @@
+<div class="section-header text-uppercase">{{fixturesFirst[0]?.local_team?.name}} Interesting Head to Heads</div>
+
+<div class="section-body  mb-20">
+  <div class="h2h-intresting-container w-100">
+  <div class="cardComp item" *ngFor="let item of fixturesFirst; let i = index" 
+  [ngClass]="{'border-less-item': (i + 1) === (fixturesFirst.length / 2),'padding-data':(i) === (fixturesFirst.length / 2)}">
+      <div class="card">
+        <div
+          class="card-body pointer"
+          (click)="navigateToH2h(item.localteam_id, item.visitorteam_id)"
+        >
+          <div class="card-item font-weight-bold">
+            <span><app-team [teamEmblem]="item.visitor_team.logo_path" [teamName]="item.visitor_team.name" [needSmallIcon]="true" class="competition-text"></app-team></span>
+            <span><span class="h2h-text"> H2H </span>{{ item.ft_score }}</span>
+          </div>
+        </div>
+      </div>
+  </div>
+    
+</div>
+<app-not-stat *ngIf="!fixturesFirst.length" [title]="'Interesting Head to Heads'"></app-not-stat>
+</div>
+
+<div class="section-header text-uppercase">{{fixturesSecond[0]?.local_team?.name}} Interesting Head to Heads</div>
+<div class="section-body mb-20">
+  <div class="h2h-intresting-container w-100">
+  <div class="cardComp item" *ngFor="let item of fixturesSecond ; let i = index" [ngClass]="{'border-less-item': (i + 1) === (fixturesSecond.length / 2),'padding-data':(i) === (fixturesSecond.length / 2)}">
+      <div class="card">
+        <div
+          class="card-body pointer"
+          (click)="navigateToH2h(item.localteam_id, item.visitorteam_id)"
+        >
+          <div class="card-item font-weight-bold">
+            <span><app-team [teamEmblem]="item.visitor_team.logo_path" [teamName]="item.visitor_team.name" [needSmallIcon]="true" class="competition-text"></app-team></span>
+            <span>
+            <span class="h2h-text"> H2H </span> {{ item.ft_score }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<app-not-stat *ngIf="!fixturesSecond.length" [title]="'Interesting Head to Heads'"></app-not-stat></div>

@@ -1,0 +1,142 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixins";
+
+.tabs-container {
+  display: flex;
+  gap: 10px;
+  padding: 1rem 0 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @include for-phone-only {
+    gap: 6px;
+  }
+}
+
+.btn {
+  border-radius: 0.5rem;
+  &-primary {
+    min-width: 104px;
+    padding: 0.25rem 14px;
+    @include font-params(14px, $white, 600, 1rem);
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 10px;
+    }
+    @include for-phone-only {
+      min-width: 68px;
+      padding: 0 12px;
+      font-size: 7px !important;
+      line-height: 13px;
+      border-radius: 4px;
+    }
+  }
+
+  &-default {
+    padding: 11px 1rem;
+    background: $clr-gray-20;
+    @include font-params(14px, $clr-text-2, 400, 1rem);
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 10px;
+    }
+
+    @include for-phone-only {
+      font-size: 7px !important;
+      line-height: 13px;
+      border-left: none;
+      border-radius: 4px;
+      padding: 0.3rem 1rem;
+    }
+
+    &.btn {
+      &-active {
+        background: $clr-primary;
+        border-left: none;
+        border-radius: 0.5rem;
+        box-shadow: $box-shadow-20;
+        @include font-params(14px, $white, 400, 1rem);
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+          font-size: 10px;
+        }
+        @include for-phone-only {
+          border-radius: 0.25rem;
+        }
+      }
+    }
+  }
+}
+
+table {
+  width: 100%;
+  border-spacing: 0;
+
+  thead {
+    tr {
+      text-transform: uppercase;
+      @include font-params(0.75rem, $clr-text-2, 400, 1rem);
+      @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        font-size: 10px;
+      }
+      @include for-phone-only {
+        font-size: 0.5rem;
+        :first-child:is(td) {
+          padding-left: 0 !important;
+        }
+      }
+    }
+
+    td {
+      padding: 1rem 0.75rem 1rem 0;
+      border-bottom: 1px solid $clr-line;
+      @include for-phone-only {
+        padding: 0.5rem 0.4rem 0.5rem 0;
+        line-height: 1.2;
+      }
+    }
+  }
+
+  tbody {
+    :nth-child(even):is(.row) {
+      background: $clr-gray-20;
+      :first-child:is(td) {
+        border-top-left-radius: 2px;
+        border-bottom-left-radius: 2px;
+      }
+
+      :last-child:is(td) {
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+      }
+    }
+
+    td {
+      padding: 0.5rem 0.75rem 0.5rem 0;
+      @include font-params(14px, $clr-text-1, 400, 1rem);
+      @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        font-size: 10px;
+      }
+      @include for-phone-only {
+        padding: 0.25rem 0;
+        font-size: 0.5rem;
+      }
+    }
+
+    .position{
+      padding: 3px 0.75rem 3px 0 !important;
+      span {
+        @include for-phone-only {
+          padding-top: 0.25rem;
+        }
+    } 
+    }
+  }
+}
+
+::ng-deep .detailed-stat {
+  app-team {
+    .team {
+      color: $clr-text-1;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  }
+}

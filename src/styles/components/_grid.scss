@@ -1,0 +1,39 @@
+@import "../mixins";
+@import "../variables";
+
+.grid-item {
+  display: grid;
+  grid-template-columns: 2fr 5fr 3fr 5fr 2fr 2fr;
+  padding: 9px 32px 11px;
+  border-bottom: 1px solid #dde1e6;
+  align-items: center;
+  font-size: 14px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  @include for-phone-only {
+    font-size: 8px;
+    padding: 4px 16px;
+  }
+}
+
+.grid-header {
+  margin: 0 16px 8px;
+  background: #f1f2f5;
+  border-radius: 6px;
+  padding: 11px 16px 10px;
+  border-bottom: none;
+
+  @include for-phone-only {
+    font-size: 7px;
+    padding: 0 9px;
+    border-radius: 2px;
+    margin: 0 9px 2px;
+  }
+}
+
+// .col-1 {
+//   width: 8.33333333%;
+// }

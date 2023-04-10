@@ -1,0 +1,15 @@
+<div class="header">
+  <h2 class="title">{{title}}</h2>
+  <app-select-league
+    *ngIf="hasSelectLeague"
+    [leagues]="leagues"
+    [curLeague]="curLeague"
+    (selectedLeague)="selectedLeague.emit($event)"
+  ></app-select-league>
+  <app-select-year *ngIf="hasSelectYear"></app-select-year>
+  <app-select-range
+    [seasons]="seasons"
+    [curSeason]="curSeason"
+    (selectedSeason)="selectedSeason.emit($event)"
+    *ngIf="hasSelectRange"></app-select-range>
+</div>

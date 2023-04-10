@@ -1,0 +1,33 @@
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <h2>
+      <span class="live">
+        <img src="assets/icons/ellipse-red.svg" alt="" />
+        Live</span
+      >
+      Events
+    </h2>
+  </div>
+  <div class="sidebar-body">
+    <ng-container *ngIf="events?.length; else notFound">
+      <div class="card-item" *ngFor="let event of events">
+        <div class="live-event" (click)="currentLeague(event.league.name)">
+          <img [src]="event?.league.logo_path" alt="" class="image" />
+          <div>
+            <h3 class="team-name">{{ event.league.name }}</h3>
+            <p class="country-name">{{ event.league.country.data.name }}</p>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #notFound>
+      <h2 class="font-weight-bold text-center">Live events not found!</h2>
+    </ng-template>
+  </div>
+  <app-more
+    *ngIf="events.length !== allEvents.length"
+    [loaderState]="loaderState"
+    (getMore)="more()"
+  >
+  </app-more>
+</aside>

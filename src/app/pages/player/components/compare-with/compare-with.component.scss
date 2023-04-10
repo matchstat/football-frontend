@@ -1,0 +1,49 @@
+@import "../../../../../styles/styles";
+
+.btn-compare {
+  background: $clr-gray-30;
+  padding: 0 24px;
+  font-size: 16px;
+  white-space: nowrap;
+  color: $clr-text-1;
+  border-radius: 8px;
+
+  @include for-phone-only {
+    font-size: 8px;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+}
+
+.compare-wrapper {
+  display: flex;
+  padding-top: 24px;
+  gap: 10px;
+  @include for-phone-only {
+    padding-top: 12px;
+  }
+}
+
+.title {
+  margin-right: 0;
+  white-space: nowrap;
+}
+
+.search {
+  input {
+      border: 1px solid $clr-line !important;
+      padding: 21px 32px !important;
+    }
+}
+
+app-search {
+  flex-grow: 1;
+
+  ::ng-deep .search-input {
+    border: 1px solid $clr-line !important;
+    height: 40px;
+    @include for-phone-only {
+        height: 28px;
+      }
+  }
+}

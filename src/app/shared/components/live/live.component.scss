@@ -1,0 +1,169 @@
+@import "../../../../styles/mixins";
+@import "../../../../styles/variables";
+
+.live {
+  border-radius: 6px;
+  overflow: hidden;
+  background: url("../../../../assets/images/live-bg-img.png");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+
+  &-header {
+    padding: 24px 1rem 14px;
+    .header-img {
+      width: 2rem;
+      aspect-ratio: 1/ 1;
+      margin-inline: auto;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  &-teams {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    gap: 2rem;
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+      gap: 1.25rem;
+    }
+    @include for-phone-only {
+      gap: 1rem;
+    }
+
+    .team {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      flex: 0 0 200px;
+      text-align: center;
+      @include for-phone-only {
+        flex: 0 0 120px;
+      }
+      @media (max-width: 375px) {
+        flex: 0 0 80px;
+      }
+
+      &-logo {
+        width: 80px;
+        aspect-ratio: 1/ 1;
+        @include for-phone-only {
+          width: 60px;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      &-name {
+        @include font-params(1.5rem, $white, 600, 30px);
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+          font-size: 1.25rem;
+        }
+        @include for-phone-only {
+          font-size: 10px;
+        }
+      }
+    }
+
+    .match {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-top: 1rem;
+      @include for-phone-only {
+        flex: 0 0 120px;
+      }
+      @media (max-width: 375px) {
+        flex: 0 0 80px;
+      }
+
+      &-minutes {
+        margin-bottom: 0.75rem;
+        @include font-params(14px, $white, 600, 18px);
+      }
+
+      &-score {
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 4px;
+        padding: 0.5rem 2rem;
+        padding-right: 1rem;
+        letter-spacing: 1rem;
+        margin-bottom: 1rem;
+        @include font-params(28px, $white, 600, 35px);
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+          font-size: 1.25rem;
+          letter-spacing: 0;
+          padding-left: 1rem;
+        }
+        @include for-phone-only {
+          font-size: 10px;
+          letter-spacing: 2px;
+          padding: 1px 10px;
+        }
+      }
+
+      &-status {
+        padding: 4px 10px;
+        border-radius: 0.25rem;
+        background: $lost;
+        text-transform: uppercase;
+        @include font-params(12px, $white, 600, 15px);
+        @include for-phone-only {
+          font-size: 0.5rem;
+        }
+      }
+    }
+  }
+
+  &-goals {
+    background: $bg-gradient-dark;
+    padding: 18px 0 62px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    @include for-phone-only {
+      padding-bottom: 48px;
+    }
+
+    .goals {
+      margin-bottom: 10px;
+      @include for-phone-only {
+        margin-bottom: 6px;
+      }
+    }
+
+    .goal {
+      display: flex;
+      @include font-params(14px, $white, 400, 17.6px);
+      @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        font-size: 12px;
+      }
+      @include for-phone-only {
+        font-size: 0.5rem;
+      }
+
+      &-minute {
+        margin-right: 18px;
+      }
+      &-player {
+        text-align: right;
+        font-weight: 600;
+        margin-right: 0.75rem;
+        flex-grow: 1;
+      }
+    }
+  }
+}

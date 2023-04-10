@@ -1,0 +1,70 @@
+@import "../../../../styles/styles";
+
+.match-stat-select {
+  padding: 20px 0;
+  @include flex(row, end, center, 0);
+
+  @include for-phone-only {
+    padding: 10px 0;
+  }
+}
+
+table {
+  th {
+    padding: 0 0 21px 0 !important;
+
+    @include for-phone-only {
+      padding: 0 !important;
+    }
+  }
+
+  tr {
+    border-bottom: 1px solid $clr-line;
+  }
+}
+
+thead tr {
+  text-transform: uppercase;
+  &>:first-child {
+    padding-left: 0 !important;
+    @include font-params(12px, $clr-text-2, 600, 15px);
+
+    @include for-phone-only {
+      @include font-params(8px, $clr-text-2, 600, 15px);
+    }
+  }
+
+  &>:not(:first-child) {
+    text-align: left;
+    padding-left: 32px !important;
+    
+    @include font-params(12px, $clr-accent, 600, 15px);
+
+    @include for-phone-only {
+      padding-left: 16px !important;
+      @include font-params(8px, $clr-accent, 600, 15px);
+    }
+  }
+}
+
+tbody tr {
+  &>:first-child {
+    padding-left: 0 !important;
+    @include font-params(14px, $clr-text-2, 400, 32px);
+
+    @include for-phone-only {
+      @include font-params(8px, $clr-text-2, 400, 16px);
+    }
+  }
+
+  &>:not(:first-child) {
+    text-align: left;
+    padding-left: 32px !important;
+    font-size: 14px;
+
+    @include for-phone-only {
+      padding-left: 16px !important;
+      font-size: 8px;
+    }
+  }
+}

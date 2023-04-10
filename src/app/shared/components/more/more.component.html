@@ -1,0 +1,15 @@
+<div class="viewmore-section">
+<button class="btn btn-more" (click)="more()">
+  <ng-container *ngIf="loaderState.val; else button">
+    <div class="loader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </ng-container>
+  <ng-template #button>
+    View More
+    <i class="icon icon-more"></i>
+  </ng-template>
+</button></div>

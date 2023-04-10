@@ -1,0 +1,58 @@
+@import "../mixins";
+@import "../variables";
+
+.card {
+  padding: 16px;
+  background: $white;
+  border-radius: 6px;
+  width: 100%;
+
+  @include for-phone-only {
+    padding: 8px 8px 12px;
+    font-size: 8px;
+    border-radius: 3px;
+  }
+
+  &-header {
+    padding-bottom: 16px;
+    display: flex;
+    align-items: center;
+    @include font-params(18px, $black, 600, 16px);
+
+    @include for-phone-only {
+      font-size: 10px;
+      padding-bottom: 4px;
+    }
+
+    &-black {
+      background: $clr-primary;
+      border-radius: 4px;
+      color: $white;
+      padding: 10px 17px;
+      @include font-params(16px, $white, 600, 16px);
+    }
+  }
+  &-right-block {
+    max-width: 360px;
+    min-height: 372px;
+  }
+  &-item {
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $clr-line;
+
+    @include for-phone-only {
+      padding: 4px 0 2px;
+    }
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0 !important;
+    }
+
+    &:first-child {
+      padding-top: 0 !important;
+    }
+  }
+}

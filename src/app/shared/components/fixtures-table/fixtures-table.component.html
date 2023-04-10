@@ -1,0 +1,75 @@
+<div class="mb-20">
+  <div class="section-header text-uppercase">{{ title }} Fixtures</div>
+  <div class="section-body" >
+    <div class="fixture-select">
+      <app-select-league
+        *ngIf="leagues.length"
+        [leagues]="leagues"
+        [curLeague]="leagueId"
+        (selectedLeague)="selectedLeague.emit($event)"
+      ></app-select-league>
+    </div>
+    <table class="table" *ngIf="fixtures.length">
+      <thead>
+        <tr>
+          <td class="fixture-country-flag">
+            <img [src]="leagueInfo.country_flag" *ngIf="leagueInfo" alt="">
+          </td>
+          <td colspan="4" class="league-text text-uppercase">
+            <span *ngIf="leagueInfo">{{leagueInfo.country}} / {{leagueInfo.name}} </span>
+            <span *ngIf="!leagueInfo">{{ selectedLeagueValue }}</span>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of fixtures">
+          <td class="text-center">
+            <div class="date-text">{{ item.dateStart | date : "dd MMM" }}</div>
+            <div class="date-text">{{ item.dateStart | date : "h:mm a" }}</div>
+          </td>
+          <td>
+            <div class="mb-1">
+              <app-away-team
+                class="team-text"
+                [needSmallIcon]="true"
+                [away]="item.homeTeam.name"
+                [awayEmblem]="item.homeTeam.logo_path"
+              ></app-away-team>
+            </div>
+            <div>
+              <app-away-team
+                class="team-text"
+                [needSmallIcon]="true"
+                [away]="item.awayTeam.name"
+                [awayEmblem]="item.awayTeam.logo_path"
+              ></app-away-team>
+            </div>
+          </td>
+
+          <td>
+            <div
+              class="btn btn-primary"
+              (click)="navigateToH2h(item.homeTeam.id, item.awayTeam.id)"
+            >
+              ViewPrediction
+            </div>
+          </td>
+          <td class="date-text">
+            <!-- BTTS-<span class="team-text">56%</span> -->
+          </td>
+          <td>
+            <app-stats
+              (click)="$event.stopPropagation(); navigateToEvent(item.id)"
+            ></app-stats>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <app-not-stat *ngIf="!fixtures.length" [title]="'fixtures'"></app-not-stat>
+    
+  </div>
+  <app-more
+    *ngIf="fixtures.length % 10 === 0 && fixtures.length !== lastLength"
+    [loaderState]="loaderState"
+    (getMore)="getMore.emit()"
+  ></app-more>
+</div>

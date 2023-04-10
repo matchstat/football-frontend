@@ -1,0 +1,14 @@
+select {
+    outline: none;
+    border: none;
+}
+
+.white-select-range {
+    &.select-range  {
+        color: white !important;
+    }
+    
+    &.select-range option {
+        color: black !important;
+    }
+}

@@ -1,0 +1,14 @@
+@import "../../../../styles/mixins";
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  @include font-params(12px, #376bb2, 400, 16px);
+
+  @include for-phone-only {
+    font-size: 7px;
+    line-height: 1;
+  }
+}

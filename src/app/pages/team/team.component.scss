@@ -1,0 +1,41 @@
+@import "../../../styles/styles";
+
+.right,
+.left {
+  display: flex;
+  margin-top: 96px;
+  flex-direction: column;
+}
+
+.right {
+  max-width: 360px;
+  width: 100%;
+
+  @include for-phone-only {
+    display: none;
+  }
+}
+
+.left {
+  margin-top: 60px;
+  flex: 1;
+
+  @include for-phone-only {
+    margin-top: 16px;
+  }
+}
+
+.d-flex {
+  gap: 40px;
+}
+
+.team-search {
+    ::ng-deep .header {
+      justify-content: start;
+    }
+
+    ::ng-deep .card {
+      background: $clr-gray-30;
+    }
+  
+}

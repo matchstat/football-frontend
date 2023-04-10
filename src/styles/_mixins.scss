@@ -1,0 +1,26 @@
+@mixin cross-browser($style, $value) {
+  -webkit-#{$style}: #{$value};
+  -moz-#{$style}: #{$value};
+  -o-#{$style}: #{$value};
+  -ms-#{$style}: #{$value};
+  #{$style}: #{$value};
+}
+
+@mixin font-params($fontSize, $color, $fontWeight, $lineHeight) {
+  font-weight: #{$fontWeight};
+  font-size: #{$fontSize};
+  line-height: #{$lineHeight};
+  color: #{$color};
+}
+
+@mixin flex($flex-direction:row, $justify-content:flex-start, $align-item: center, $gap:1rem) {
+  display: flex;
+  flex-direction: #{$flex-direction};
+  justify-content: #{$justify-content};
+  align-items: #{$align-item};
+  gap: #{$gap}
+}
+
+@mixin for-phone-only {
+  @media (max-width: 768px) { @content; }
+}

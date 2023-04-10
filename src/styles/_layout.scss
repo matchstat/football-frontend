@@ -1,0 +1,37 @@
+@import "mixins";
+
+.layout {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 2rem;
+
+  max-width: 1112px;
+  margin-inline: auto;
+  padding: 2rem 1rem;
+
+  &-main {
+    grid-column: 1/ 9;
+  }
+
+  &-aside {
+    grid-column: 9/ -1;
+    @include for-phone-only {
+      display: none;
+    }
+  }
+
+  @include for-phone-only {
+    grid-template-columns: repeat(8, 1fr);
+    row-gap: 2rem;
+    max-width: 500px;
+    margin-inline: auto;
+    padding: 0.75rem;
+
+    &-main {
+      grid-column: 1/ 9;
+    }
+    &-aside {
+      grid-column: 1/ 6;
+    }
+  }
+}

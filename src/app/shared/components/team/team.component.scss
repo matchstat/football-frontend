@@ -1,0 +1,37 @@
+@import "../../../../styles/mixins";
+@import "../../../../styles/variables";
+
+.team {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @include for-phone-only {
+    gap: 5px;
+  }
+
+  .image {
+    width: 1.25rem;
+    height: 1.25rem;
+    object-fit: contain;
+
+    @include for-phone-only {
+      max-height: 14px;
+    }
+  }
+
+  &-name {
+    @include font-params(14px, $clr-text-1, 600, 1rem);
+    @include for-phone-only {
+      font-size: 0.5rem;
+    }
+  }
+}
+
+.small-icon {
+  max-height: 18px !important;
+
+  @include for-phone-only {
+    max-height: 12px !important;
+  }
+}

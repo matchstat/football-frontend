@@ -1,0 +1,58 @@
+<div class="mb-20">
+<div class="section-header text-uppercase">{{ pastMatches && pastMatches[0]?.homeTeam?.name }} VS
+    {{ pastMatches && pastMatches[0]?.awayTeam?.name }} Past Match</div>
+
+<div class="section-body">
+  <div class="table-grid" *ngIf="events?.length">
+    <!-- <div class="past-header">
+      <div class=""><img [src]="'assets/flags/AGO.svg'" /></div>
+      <div class="league-text text-uppercase team-data">spain/ la liga</div>
+    </div> -->
+    <div
+      class="grid-item"
+      *ngFor="let item of events"
+      (click)="navigateToH2h(item.homeTeam.id, item.awayTeam.id)"
+      style="cursor: pointer"
+    >
+      <div class="date text-center">{{ item?.dateStart | date: "dd MMM" }}</div>
+      <div class="team-data"><app-away-team
+        [away]="item?.homeTeam?.name"
+        [needSmallIcon]="true"
+        [awayEmblem]="item?.homeTeam?.logo_path"
+      ></app-away-team>
+      <app-away-team
+        [away]="item?.awayTeam?.name"
+        [needSmallIcon]="true"
+        [awayEmblem]="item?.awayTeam?.logo_path"
+      ></app-away-team></div>
+      <div class="d-flex justify-content-center">
+      <img src="assets/icons/divider.svg" style="height: 3em" />
+      </div>
+      <div class="score text-center">
+        <div>{{ item?.homeTeam?.score }}</div>
+        <div>{{ item?.awayTeam?.score }}</div>
+      </div>
+      <div class="match-result d-flex w-100 justify-content-center"><div
+        [ngClass]="
+          checkStatus(item.homeTeam, item.awayTeam) === 'W'
+            ? 'result-win'
+            : checkStatus(item.homeTeam, item.awayTeam) === 'D' ? 'result-draw' :'result-loose'
+        "
+      >
+        {{ checkStatus(item.homeTeam, item.awayTeam)  }}
+      </div></div>
+      
+      <div>
+        <app-stats></app-stats>
+      </div>
+    </div>
+  </div>
+  <app-not-stat [title]="'Past Match'" *ngIf="!events?.length" class="no-past-matches"></app-not-stat>
+  <app-more
+    *ngIf="events?.length !== allEvents?.length"
+    [loaderState]="loaderState"
+    (getMore)="more()"
+  >
+  </app-more>
+</div>
+</div>

@@ -1,0 +1,220 @@
+
+<div class="section h2h-teams-info" *ngIf="firstTeamGeneralInfo &&  secondTeamGeneralInfo">
+  <div class="team-info">
+    <div class="team home">
+      <div class="home-team-logo">
+        <div class="team-logo">
+          <img [src]="firstTeamLogo" alt="" *ngIf="firstTeamLogo" />
+          <img src="https://cdn.sportmonks.com/images/soccer/team_placeholder.png" *ngIf="!firstTeamLogo" alt="">
+        </div>
+        <div class="team-country">
+          <div class="flag-icon">
+            <img src="assets/images/country-flag.png" />
+          </div>
+          <p>
+            {{  firstTeamGeneralInfo ? firstTeamGeneralInfo.venue.country : '' }}
+          </p>
+        </div>
+      </div>
+      <div class="home-team-name">
+        <h2 class="team-name">{{ firstTeamGeneralInfo ? firstTeamGeneralInfo.name : '' }}</h2>
+      </div>
+    </div>
+
+    <div class="team away">
+      <div class="away-team-name">
+        <h2 class="team-name">{{ secondTeamGeneralInfo ? secondTeamGeneralInfo.name : ''}}</h2>
+      </div>
+      <div class="away-team-logo">
+        <div class="team-logo">
+          <img [src]="secondTeamLogo" alt="" *ngIf="secondTeamLogo"/>
+          <img src="https://cdn.sportmonks.com/images/soccer/team_placeholder.png" *ngIf="!secondTeamLogo" alt="">
+        </div>
+        <div class="team-country">
+          <div class="flag-icon">
+            <img src="assets/images/country-flag.png" />
+          </div>
+          <p>
+            {{ secondTeamGeneralInfo ? secondTeamGeneralInfo.venue.country : '' }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="team-stats">
+    <div class="home right-border">
+      <div class="trophies">
+        <div class="trophy" *ngFor="let tr of firstTeamGeneralInfo?.trophies">
+          <p class="trophy-name">
+            <img class="trophy-icon" src="assets/icons/win-gray.svg" alt="" />
+            {{ tr.league_name }}
+          </p>
+          <p class="trophy-count">{{ tr.count }}</p>
+        </div>
+      </div>
+      <!-- <div class="recent-form">
+        <p>recent form</p>
+        <div class="d-flex flex-wrap match-result">
+          <div class="results btn-win">W</div>
+          <div class="results btn-win">W</div>
+          <div class="results btn-lost">L</div>
+          <div class="results btn-win">W</div>
+          <div class="results btn-win">W</div>
+          <div class="results btn-win">W</div>
+          <div class="results btn-win">W</div>
+          <div class="results btn-lost">L</div>
+          <div class="results btn-win">W</div>
+          <div class="results btn-win">W</div>
+        </div>
+      </div> -->
+    </div>
+    <div class="away">
+      <div class="trophies">
+        <div class="trophy" *ngFor="let tr of secondTeamGeneralInfo?.trophies">
+          <p class="trophy-name">
+            <img class="trophy-icon" src="assets/icons/win-gray.svg" alt="" />
+            {{ tr.league_name }}
+          </p>
+          <p class="trophy-count">{{ tr.count }}</p>
+        </div>
+      </div>
+      <!-- <div class="recent-form">
+        <p>recent form</p>
+        <div class="d-flex flex-wrap match-result">
+          <div class="results btn-win">W</div>
+          <div class="results btn-win">W</div>
+          <div class="results btn-lost">L</div>
+          <div class="results btn-win">W</div>
+          <div class="results btn-win">W</div>
+          <div class="results btn-win">W</div>
+          <div class="results btn-win">W</div>
+          <div class="results btn-lost">L</div>
+          <div class="results btn-win">W</div>
+          <div class="results btn-win">W</div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+<div class="section-body mb-20" *ngIf="firstTeamGeneralInfo &&  secondTeamGeneralInfo">
+  <div class="table">
+    <table class="w-100">
+      <tbody>
+        <tr>
+          <td>
+            <div class="stats-left">
+              <span class="head-text">Venue Name</span>
+              <span class="data-text">{{
+                firstTeamGeneralInfo ? firstTeamGeneralInfo.venue.name : ''
+              }}</span>
+            </div>
+          </td>
+          <td>
+            <div class="stats-right">
+              <span class="head-text">Venue Name</span>
+              <span class="data-text">{{
+                secondTeamGeneralInfo ? secondTeamGeneralInfo.venue.name : ''
+              }}</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stats-left">
+              <span class="head-text">Capacity</span>
+              <span class="data-text">{{
+                firstTeamGeneralInfo ? firstTeamGeneralInfo.venue.capacity : ''
+              }}</span>
+            </div>
+          </td>
+          <td>
+            <div class="stats-right">
+              <span class="head-text">Capacity</span>
+              <span class="data-text">{{
+                secondTeamGeneralInfo ? secondTeamGeneralInfo.venue.capacity : ''
+              }}</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stats-left">
+              <span class="head-text">City</span>
+              <span class="data-text">{{
+                firstTeamGeneralInfo ? firstTeamGeneralInfo.venue.city : ''
+              }}</span>
+            </div>
+          </td>
+          <td>
+            <div class="stats-right">
+              <span class="head-text">City</span>
+              <span class="data-text">{{
+                secondTeamGeneralInfo ? secondTeamGeneralInfo.venue.city : ''
+              }}</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stats-left">
+              <span class="head-text">Coach</span>
+              <span class="data-text">{{
+                firstTeamGeneralInfo ? firstTeamGeneralInfo.coach.lastName : ''
+              }}</span>
+            </div>
+          </td>
+          <td>
+            <div class="stats-right">
+              <span class="head-text">Coach</span>
+              <span class="data-text">{{
+                secondTeamGeneralInfo ? secondTeamGeneralInfo.coach.lastName : ''
+              }}</span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stats-left">
+              <span class="head-text">Current Top Score</span>
+              <span class="data-text"
+                ><ng-container *ngIf="firstTeam?.topScorer">
+                  {{ firstTeam?.topScorer?.player?.data?.firstname }}
+                </ng-container></span
+              >
+            </div>
+          </td>
+          <td>
+            <div class="stats-right">
+              <span class="head-text">Current Top Score</span>
+              <span class="data-text"
+                ><ng-container *ngIf="firstTeam?.topScorer">
+                  {{ secondTeam?.topScorer?.player?.data?.firstname }}
+                </ng-container></span
+              >
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="stats-left">
+              <span class="head-text">Domestic League Rank</span>
+              <span class="data-text">{{
+                firstTeamGeneralInfo ? firstTeamGeneralInfo.venue.name : ''
+              }}</span>
+            </div>
+          </td>
+          <td>
+            <div class="stats-right">
+              <span class="head-text">Domestic League Rank</span>
+              <span class="data-text">{{
+                secondTeamGeneralInfo ? secondTeamGeneralInfo.venue.name : ''
+              }}</span>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

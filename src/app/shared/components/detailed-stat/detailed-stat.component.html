@@ -1,0 +1,140 @@
+<div class="section">
+  <app-header-component
+    [title]="label + ' Detailed Stats'"
+    [hasSelectRange]="true"
+    [seasons]="seasons"
+    [curSeason]="curSeason"
+    (selectedSeason)="selectSeason($event)"
+    class="section-header"
+  ></app-header-component>
+
+  <ng-container>
+    <div class="section-body detailed-stat">
+      <div class="tabs-container">
+        <button
+          (click)="showTable(detailedTypes.BTTS)"
+          class="btn btn-default btn-btts pointer"
+          [class.btn-active]="detailedTypes.BTTS === currentType"
+        >
+          BTTS
+        </button>
+        <button
+          (click)="showTable(detailedTypes.OVER)"
+          class="btn btn-default btn-over pointer"
+          [class.btn-active]="detailedTypes.OVER === currentType"
+        >
+          OVER 2.5
+        </button>
+        <button
+          (click)="showTable(detailedTypes.UNDER)"
+          class="btn btn-default btn-under pointer"
+          [class.btn-active]="detailedTypes.UNDER === currentType"
+        >
+          Under 2.5
+        </button>
+        <button
+          (click)="showTable(detailedTypes.FTS)"
+          class="btn btn-default btn-fts pointer"
+          [class.btn-active]="detailedTypes.FTS === currentType"
+        >
+          FTS
+        </button>
+        <button
+          (click)="showTable(detailedTypes.CLEAN_SHEET)"
+          class="btn btn-default btn-clean-sheet pointer"
+          [class.btn-active]="detailedTypes.CLEAN_SHEET === currentType"
+        >
+          CLEAN SHEET
+        </button>
+        <button
+          (click)="showTable(detailedTypes.CORNERS)"
+          class="btn btn-default btn-corners pointer"
+          [class.btn-active]="detailedTypes.CORNERS === currentType"
+        >
+          CORNERS
+        </button>
+        <button
+          (click)="showTable(detailedTypes.CARDS)"
+          class="btn btn-default btn-cards pointer"
+          [class.btn-active]="detailedTypes.CARDS === currentType"
+        >
+          CARDS
+        </button>
+      </div>
+
+      <table
+        class="detaied-stat"
+        *ngIf="detailedStats?.length; else noStatsFound"
+      >
+        <thead>
+          <tr>
+            <td style="padding-left: 1rem" class="text-center">
+              N<sup class="underline">o</sup>
+            </td>
+            <td style="padding-left: 2rem">TEAM</td>
+            <td *ngFor="let item of columns[currentType].headers">
+              <ng-container
+                *ngIf="
+                  item === cardTypes.RED || item === cardTypes.YELLOW;
+                  else items
+                "
+              >
+                <span (click)="sortByCard(item)"> {{ item }}</span>
+              </ng-container>
+              <ng-template #items>
+                {{ item }}
+              </ng-template>
+            </td>
+            <td></td>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr class="row" *ngFor="let item of detailedStats">
+            <td class="position">
+              <div [className]="'position-color ' + item.class"></div>
+              <span class="text-center">
+                {{ item.position }}
+              </span>
+            </td>
+
+            <td>
+              <app-team
+                (click)="navigateToTeamPage(item.name)"
+                [teamEmblem]="item.logo_path"
+                [teamName]="item.name"
+              ></app-team>
+            </td>
+
+            <ng-container *ngFor="let key of columns[currentType].data">
+              <td>
+                <div *ngIf="key === 'nextMatch'; else otherFields">
+                  <img
+                    *ngIf="item.nextMatch"
+                    [src]="item.nextMatch"
+                    class="image"
+                  />
+                </div>
+              </td>
+
+              <ng-template #otherFields>
+                <span class="text-left stats">{{ item[key] }}</span>
+              </ng-template>
+            </ng-container>
+
+            <td>
+              <button class="btn btn-primary">All Predictions</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <ng-container  *ngIf="detailedStats.length">
+        <app-uefa-info></app-uefa-info>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #noStatsFound>
+  <app-not-stat [title]="label + ' Detailed Stats'"></app-not-stat>
+</ng-template>

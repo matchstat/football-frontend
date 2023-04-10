@@ -1,0 +1,141 @@
+<ng-container *ngIf="generalInfo">
+<div class=" information-wrap__header profile-header mb-20">
+  <div class="header__top">
+    <div class="">
+          
+      <div class="image-container">
+        <img
+          class="image"
+          [src]="generalInfo.venue.photo"
+          onerror="this.onerror=null; this.src='assets/images/noprofile.bmp'"
+          class="header__container-image"
+        />
+      </div>
+      <div class="d-flex align-items-center" style="width:100px">
+        <!-- <img
+          [src]="'assets/flags/AGO.svg'"
+          style="width: 22px; height: 1rem"
+        /> -->
+        <p class="country-name mb-0 text-uppercase">
+          {{ generalInfo.venue.country }}
+        </p>
+      </div>
+    </div>
+    <div class="name-container flex-grow-1">
+      <div class="player-name">{{ generalInfo?.name }}</div>
+    </div>
+  </div>
+  <div class="d-flex px-0 score-data">
+    <div class="">
+      <div class="d-flex gap-1">
+        <div class="record__icon">
+          <img src="assets/icons/win-gray.svg" alt="" />
+        </div>
+        <div class="record__title">Titles</div>
+      </div>
+
+      <div class="record__value">N/A</div>
+    </div>
+    <div class="">
+      <div class="d-flex gap-1">
+        <div class="record__icon">
+          <img src="assets/icons/win-gray.svg" alt="" />
+        </div>
+        <div class="record__title">Champions League</div>
+      </div>
+
+      <div class="record__value">N/A</div>
+    </div>
+    <div class="">
+      <div class="d-flex gap-1">
+        <div class="record__icon">
+          <img src="assets/icons/win-gray.svg" alt="" />
+        </div>
+        <div class="record__title">La Liga</div>
+      </div>
+
+      <div class="record__value">N/A</div>
+    </div>
+    <div class="">
+      <div class="d-flex gap-1">
+        <div class="record__icon">
+          <img src="assets/icons/win-gray.svg" alt="" />
+        </div>
+        <div class="record__title">Others</div>
+      </div>
+
+      <div class="record__value">N/A</div>
+    </div>
+    <!-- <div class="">
+      <div class="record__title text-capitalize">Recent Form</div>
+      <div class="d-flex flex-wrap">
+        <div class="d-flex flex-wrap match-result">
+          <div
+            *ngFor="let result of recentForm; let i = index"
+            class="results"
+            [class.result-win]="result === 'w'"
+            [class.result-loose]="result === 'l'"
+          >
+            {{ result === "w" ? "W" : "L" }}
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>
+
+<div class="h2h-with-wrapper mb-20">
+  <button class="btn btn-team">H2H With</button>
+        <app-search
+          [isMenu]="true"
+          placeholder="Search Player"
+          [listResult]="teamProfiles"
+          [showBorder]="true"
+          [size]="'short'"
+          [isDebounce]="true"
+          (eventSubmit)="searchTeams($event)"
+          [firstTeamId]="generalInfo.id"
+          class="w-100 search"
+  ></app-search>
+</div>
+
+  <div class="card mb-20">
+    <div class="card-body">
+        <div class="card-item">
+          <span class="left">Venue Name</span>
+          <span class="right">{{ generalInfo.venue.name }}</span>
+        </div>
+        <div class="card-item">
+          <span class="left">Capacity</span>
+          <span class="right">{{ generalInfo.venue.capacity }}</span>
+        </div>
+        <div class="card-item">
+          <span class="left">City</span>
+          <span class="right">{{ generalInfo.venue.city }}</span>
+        </div>
+        <div class="card-item">
+          <span class="left">Country</span>
+          <span class="right">{{ generalInfo.venue.country }}</span>
+        </div>
+        <div class="card-item">
+          <span class="left">Coach</span>
+          <span class="right">{{ generalInfo.coach.lastName }}</span>
+        </div>
+        <div class="card-item">
+          <span class="left">Current Top Scorer</span>
+          <span
+            class="right pointer"
+            (click)="
+              navigateToPlayerProfile(
+                secondaryInfo.topScorer?.player?.data?.firstname
+              )
+            "
+          >
+            <ng-container *ngIf="secondaryInfo?.topScorer">
+              {{ secondaryInfo.topScorer?.player?.data?.firstname }}
+            </ng-container>
+          </span>
+        </div>
+      </div>
+  </div>
+</ng-container>

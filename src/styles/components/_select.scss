@@ -1,0 +1,41 @@
+@import "../mixins";
+@import "../variables";
+
+.select {
+  padding: 0 11px;
+  background: transparent;
+  height: 28px;
+  border: none;
+  outline: none;
+  margin-left: 1rem;
+  @include font-params(1rem, $clr-text-2, 400, 1.25rem);
+
+  @include for-phone-only {
+    font-size: 8px;
+    margin-left: 10px;
+    padding: 0 6px;
+    height: 22px;
+  }
+
+  &-year {
+    min-width: 108px;
+
+    @include for-phone-only {
+      min-width: 48px;
+    }
+  }
+  &-league {
+    min-width: 120px;
+
+    @include for-phone-only {
+      min-width: 56px;
+    }
+  }
+  &-range {
+    min-width: 112px;
+
+    @include for-phone-only {
+      min-width: 60px;
+    }
+  }
+}

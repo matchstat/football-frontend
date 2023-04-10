@@ -1,0 +1,139 @@
+<div class="section">
+  <h2 class="section-header">{{ title }} Player stats</h2>
+
+  <ng-container>
+    <div class="section-body player-stats">
+      <div class="player-stats-header">
+        <div class="total-players" *ngIf="playerStats?.players?.length">
+          Total players: <span>{{ allPlayers.length }}</span>
+        </div>
+        <div class="year-select">
+          <!-- <app-select-league></app-select-league> -->
+
+          <app-select-range
+            (selectedSeason)="selectedSeason.emit($event)"
+            [seasons]="seasons"
+            [curSeason]="seasonId"
+            *ngIf="seasons.length"
+          ></app-select-range>
+        </div>
+      </div>
+
+      <table *ngIf="playerStats?.players?.length">
+        <thead>
+          <tr>
+            <td>N<sup class="underline">o</sup></td>
+            <td></td>
+            <td>player</td>
+            <td>age</td>
+            <td>
+              <div class="icon">
+                <img src="assets/icons/joursey.svg" alt="" />
+              </div>
+            </td>
+            <td>
+              <div class="icon" (click)="sortByGoals()">
+                <img src="assets/icons/goal.svg" alt="" />
+              </div>
+            </td>
+            <td>
+              <div class="icon" (click)="sortBytimePlayed()">
+                <img src="assets/icons/minutes.svg" alt="" />
+              </div>
+            </td>
+            <td>
+              <div class="icon" (click)="sortByYellowCards()">
+                <img src="assets/icons/yellow-card.svg" alt="" />
+              </div>
+            </td>
+            <td>
+              <div class="icon" (click)="sortByRedCards()">
+                <img src="assets/icons/red-card.svg" alt="" />
+              </div>
+            </td>
+            <td>
+              <div class="icon" (click)="sortByRating()">
+                <img src="assets/icons/ratings.svg" alt="" />
+              </div>
+            </td>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngIf="coachShow">
+            <td class="row-title" colspan="10">Coach</td>
+          </tr>
+
+          <tr class="row" *ngIf="coachShow">
+            <td></td>
+            <td style="width: 36px; padding-right: 0px" class="player-image">
+              <img
+                class="image"
+                [src]="playerStats.coach?.image_path"
+                onerror="this.onerror=null; this.src='assets/images/player-img-error.png'"
+              />
+            </td>
+            <td style="padding-left: 12px">
+              {{ playerStats.coach?.fullname }}
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+
+        <tbody>
+          <tr>
+            <td class="row-title" colspan="10">Player</td>
+          </tr>
+
+          <tr
+            class="row"
+            *ngFor="let item of playerStats.players; let i = index"
+          >
+            <td>{{ item.number }}</td>
+            <td style="width: 36px; padding-right: 0px" class="player-image">
+              <img
+                class="image"
+                [src]="item.image_path"
+                onerror="this.onerror=null; this.src='assets/images/player-img-error.png'"
+              />
+            </td>
+            <td class="player-info" style="padding-left: 12px">
+              <div (click)="navigateToPlayerProfile(item.fullName)">
+                <p class="player-name">{{ item.fullName }}</p>
+                <p class="country-name">{{ item.player?.data?.nationality }}</p>
+              </div>
+            </td>
+            <td class="row-data">
+              {{ calcAge(item.player?.data?.birthdate) }}
+            </td>
+            <td class="row-data">{{ item.number }}</td>
+            <td class="row-data">{{ item.goals || 0 }}</td>
+            <td class="row-data">{{ item.timePlayed || 0 }}</td>
+            <td class="row-data">{{ item.yellowcards || 0 }}</td>
+            <td class="row-data">{{ item.redcards || 0 }}</td>
+            <td class="row-data">
+              {{ item.rating || 0 }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <app-not-stat [title]="'Player Stats'" *ngIf="!playerStats?.players?.length"></app-not-stat>
+    </div>
+    <div class="view-more" *ngIf="playerStats?.players?.length">
+      <app-more
+        *ngIf="playerStats?.players?.length !== allPlayers.length"
+        (getMore)="more.emit()"
+        [loaderState]="loaderState"
+      ></app-more>
+    </div>
+  </ng-container>
+
+</div>
+
+

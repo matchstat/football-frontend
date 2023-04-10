@@ -1,0 +1,237 @@
+@import "../../../../styles/styles";
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.section-body {
+  padding-top: 32px;
+  @include for-phone-only {
+    padding-top: 16px;
+  }
+}
+
+.progressbar-border {
+  border-right: 4px solid $white;
+}
+
+.progress {
+  height:6px;
+  width: 100%;
+}
+
+.progress-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  @include font-params(16px,$clr-text-2,400,20.11px);
+  @include for-phone-only {
+    @include font-params(8px, $clr-text-2, 400, 20.11px);
+  }
+}
+
+.card {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding: 20px 32px 32px;
+  @include for-phone-only {
+  padding: 10px 16px 16px;
+  }
+}
+
+.card-body {
+  padding: 0;
+}
+
+.wins {
+  @include font-params(12px, $clr-text-2, 400, 20.11px);
+  
+    @include for-phone-only {
+      @include font-params(8px, $clr-text-2, 400, 20.11px);
+    }
+}
+
+app-header-component {
+  margin-bottom: 16px;
+  @include for-phone-only {
+    margin-bottom: 0;
+  }
+}
+
+.coming-match {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto ;
+
+  @include for-phone-only {
+    max-width: 353px;
+  }
+}
+
+.teams {
+  display: flex;
+  justify-content: space-between;
+  gap:85px;
+  @include for-phone-only {
+    gap:25px;
+  }
+}
+
+.emblem {
+  max-height: 105px;
+  max-width: 105px;
+  display: flex;
+  align-items: flex-end;
+  
+
+  img {
+    max-height: 50px;
+    max-width: 105px;
+  }
+
+  @include for-phone-only {
+    max-height: 46px;
+    max-width: 46px;
+
+    img {
+      max-height: 40px;
+      max-width: 40px;
+    }
+  }
+}
+
+.home,.away{
+  align-self: flex-end;
+ 
+}
+
+.home,
+.away,
+.league {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 600;
+}
+
+.name {
+  margin-top: 16px;
+  margin-bottom: 20px;
+
+  @include for-phone-only {
+    margin-top: 6px;
+    margin-bottom: 8px;
+    font-size: 12px;
+  }
+}
+
+.date {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+
+  @include for-phone-only {
+    margin-top: 6px;
+    gap: 0;
+    font-size: 10px;
+    line-height: 14px;
+  }
+}
+
+.match-left {
+  display: flex;
+  width: 100%;
+  padding-top: 25px;
+
+}
+
+.times {
+  display: flex;
+  align-items: end;
+  gap:2px;
+}
+
+.number {
+  @include font-params(21px, #181818, 400, 27px);
+  font-family: 'Digital Normal', sans-serif;
+
+  @include for-phone-only {
+    font-size: 13px;
+    line-height: 16px;
+    margin-bottom: 4px;
+  }
+}
+
+.unit {
+}
+
+.mr-n2 {
+  margin-right: -.75em !important;
+}
+
+.btn-primary {
+  margin: 0 auto;
+  width: 256px;
+  font-weight: 600;
+
+  @include for-phone-only {
+    width: 175px;
+    font-size: 13px;
+  }
+}
+
+.percent {
+  padding: 2px 0;
+  width: 62px;
+  text-align: center;
+  color: #FFFFFF;
+  border: none;
+  font-size: 14px;
+
+  @include for-phone-only {
+    width: 31px;
+    font-size: 10px;
+  }
+
+  &-green {
+    background: #019633;
+  }
+
+  &-orange {
+    background: #C99E57;
+  }
+}
+.first-num {
+  @include font-params(20px, $clr-accent, 600, 25.14px);
+  
+    @include for-phone-only {
+      @include font-params(12px, $clr-accent, 600, 25.14px);
+    }
+}
+.second-num {
+  font-size: 26px;
+  font-weight: normal;
+  line-height: normal;
+  color: #dfbc64;
+}
+.draws-num {
+  font-size: 26px;
+  color: #747a84;
+  font-weight: normal;
+  line-height: normal;
+}
+
+.first-wins {
+  
+  background-color: $clr-accent;
+}
+
+.second-wins {
+  background: $clr-gray-30;
+}
+
+.draws {
+  background: $light-blue;
+}

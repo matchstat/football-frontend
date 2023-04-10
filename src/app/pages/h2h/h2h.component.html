@@ -1,0 +1,87 @@
+<div class="layout">
+  <div class="layout-main">
+      <app-team-info
+        class="mb-20"
+        *ngIf="firstTeam || secondTeam"
+        [firstTeam]="firstTeam"
+        [secondTeam]="secondTeam"
+        [firstTeamForm]="firstTeamForm"
+        [secondTeamForm]="secondTeamForm"
+        [firstTeamLogo]="firstTeamLogo"
+        [secondTeamLogo]="secondTeamLogo"
+      ></app-team-info>
+      <app-team-diagram *ngIf="allMatches"
+        [allMatches]="allMatches"
+        [firstTeamId]="firstTeamId"
+        [secondTeamId]="secondTeamId"
+      ></app-team-diagram>
+      <app-upcoming-match
+        *ngIf="firstTeam && secondTeam"
+        [teamName]="firstTeam?.name"
+      ></app-upcoming-match>
+      <app-upcoming-match
+        *ngIf="firstTeam && secondTeam"
+        [teamName]="secondTeam?.name"
+      ></app-upcoming-match>
+      <!-- <app-prediction-stat *ngIf="firstTeam?.name || secondTeam?.name" [firstTeamName]="firstTeam?.name"
+        [secondTeamName]="secondTeam?.name"></app-prediction-stat> -->
+      <app-season-stats
+        *ngIf="curSeason && curLeague"
+        [seasonId]="curSeason"
+        [leagueId]="curLeague"
+        [allMatches]="allMatches"
+        [firstTeamId]="firstTeamId"
+        [secondTeamId]="secondTeamId"
+        [allSelected]="true"
+        [seasonIds]="seasonIds"
+        [firstTeamName]="firstTeam.name"
+        [secondTeamName]="secondTeam.name"
+      ></app-season-stats>
+      <app-past-match [pastMatches]="allMatches" [currentTeamId]="firstTeamId"></app-past-match>
+      <app-match-stats
+        [allMatches]="allMatches"
+        [firstTeamName]="firstTeam ? firstTeam.name : ''"
+        [secondTeamName]="secondTeam ? secondTeam.name : ''"
+      ></app-match-stats>
+      <app-recently-played
+        [firstTeamLogo]="firstTeamLogo"
+        [secondTeamLogo]="secondTeamLogo"
+        [firstTeamId]="firstTeamId"
+        [secondTeamId]="secondTeamId"
+      ></app-recently-played>
+      <app-top-players-comparison
+        [firstTeamId]="firstTeamId"
+        [secondTeamId]="secondTeamId"
+      ></app-top-players-comparison>
+      <app-team-players
+        *ngIf="firstTeam && secondTeam"
+        [firstTeam]="firstTeam"
+        [secondTeam]="secondTeam"
+      ></app-team-players>
+      <app-h2h-interesting
+        [firstTeamId]="firstTeamId"
+        [secondTeamId]="secondTeamId"
+      ></app-h2h-interesting>
+      <!-- <app-search-h2h class="h2h-search mb-20"></app-search-h2h> -->
+      <app-competition-standing
+        *ngIf="curSeason && curLeague"
+        [seasonId]="curSeason"
+        [leagueId]="curLeague"
+      ></app-competition-standing>
+      
+      
+      <app-detailed-stat
+        *ngIf="isCurrentLeague && (seasons$ | async)"
+        [title]="leagues[0].leagueName"
+      ></app-detailed-stat>
+    <ng-template #teamEmpty>
+      <div *ngIf="!loading">
+        <h1 class="font-weight-bold text-center">Teams not found!</h1>
+      </div>
+    </ng-template>
+  </div>
+  <div class="layout-aside">
+    <app-interesting-h2h class="mb-30"></app-interesting-h2h>
+    <app-live-events></app-live-events>
+  </div>
+</div>

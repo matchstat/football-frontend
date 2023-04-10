@@ -1,0 +1,64 @@
+<div class="section live">
+  <div class="live-header">
+    <div class="header-img">
+      <img [src]="liveMatch?.league?.logo_path" />
+    </div>
+  </div>
+
+  <div class="live-teams">
+    <div class="team">
+      <div class="team-logo">
+        <img [src]="liveMatch?.localTeam?.logo_path" />
+      </div>
+      <p class="team-name">{{ liveMatch?.localTeam?.name }}</p>
+    </div>
+
+    <div class="match">
+      <p class="match-minutes" *ngIf="liveMatch?.time?.minute">
+        {{ liveMatch?.time?.minute }}'
+      </p>
+      <p class="match-score" *ngIf="liveMatch?.matchEnd">
+        {{ liveMatch?.matchEnd }}
+      </p>
+      <p class="match-status">{{liveMatch?.time?.status}}</p>
+    </div>
+
+    <div class="team">
+      <div class="team-logo">
+        <img [src]="liveMatch?.visitorTeam?.logo_path" />
+      </div>
+      <p class="team-name">{{ liveMatch?.visitorTeam?.name }}</p>
+    </div>
+  </div>
+
+  <div class="live-goals">
+    <div>
+      <div class="goals home" *ngFor="let item of visitorTeamEvents">
+        <div
+          class="goal"
+          *ngIf="item.type === 'goal' || item.type === 'own-goal'"
+        >
+          <p class="goal-minute">{{ item.minute }}’</p>
+          <p class="goal-player">{{ item.player_name }}</p>
+          <div>
+            <img src="assets/icons/goal.svg" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="goals away" *ngFor="let item of localTeamEvents">
+        <div
+          class="goal"
+          *ngIf="item.type === 'goal' || item.type === 'own-goal'"
+        >
+          <p class="goal-minute">{{ item.minute }}’</p>
+          <p class="goal-player">{{ item.player_name }}</p>
+          <div>
+            <img src="assets/icons/goal.svg" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

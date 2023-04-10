@@ -1,0 +1,45 @@
+<div class="layout">
+  <div class="layout-main">
+    <ng-container *ngIf="player; else playerEmpty">
+      <app-player-profile></app-player-profile>
+      <app-upcoming-match
+        [title]="'Upcoming Match For ' + player.team.name"
+        [teamName]="player.team.name"
+      ></app-upcoming-match>
+      <app-player-stat
+        [title]="player.fullName"
+        class="mb-20"
+      ></app-player-stat>
+      <!-- <app-compare-with class="mb-20"></app-compare-with> -->
+      <app-fixtures [title]="player.team.name"></app-fixtures>
+      <app-results [title]="player.team.name"></app-results>
+      <app-competition-standing
+        [seasonId]="player.seasonId"
+        [leagueId]="player.leagueId"
+        class="mb-20"
+      ></app-competition-standing>
+      <app-team-player-stats
+        [title]="player.team.name"
+        [teamId]="player.team.id"
+        [seasonId]="player.seasonId"
+        [coachShow]="false"
+      ></app-team-player-stats>
+      <button class="btn btn-primary hide-mobile d-flex">
+        View States For All Players in the League
+      </button>
+    </ng-container>
+    <ng-template #playerEmpty>
+      <div *ngIf="!loading">
+        <h1 class="font-weight-bold text-center">Player not found!</h1>
+      </div>
+
+      <div *ngIf="loading">
+        <h1 class="font-weight-bold text-center">Player is loading...</h1>
+      </div>
+    </ng-template>
+  </div>
+  <div class="layout-aside">
+    <app-interesting-h2h class="mb-30"></app-interesting-h2h>
+    <app-live-events></app-live-events>
+  </div>
+</div>

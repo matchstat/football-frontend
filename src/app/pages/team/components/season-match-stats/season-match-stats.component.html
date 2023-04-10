@@ -1,0 +1,150 @@
+
+<div class="mb-20"><div class="section-header text-uppercase">{{title}} Season Match Stats</div>
+  <div class="section-body">
+  <div class="season-select">
+  <app-select-league
+    [leagues]="leagues"
+    [curLeague]="curLeague"
+    (selectedLeague)="selectLeague($event)"
+  ></app-select-league>
+  <app-select-range
+    [seasons]="seasons"
+    [curSeason]="curSeason"
+    (selectedSeason)="selectSeason($event)"
+  ></app-select-range>
+  </div>
+  <div class="table" *ngIf="matchStatistics">
+  <table class="w-100">
+    <tbody>
+      <tr>
+        <td>
+          <div class="stats-left">
+            <span class="head-text">Attacks</span>
+            <span class="data-text">{{matchStatistics.stats.attacks}}</span>
+          </div>
+        </td>
+        <td>
+          <div class="stats-right">
+            <span  class="head-text">Shots Off Target</span>
+            <span class="data-text">{{matchStatistics.stats.shotsOffTarget}}</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="stats-left">
+            <span  class="head-text">Dangerous Attacks</span>
+            <span class="data-text">{{matchStatistics.stats.dangerousAttacks}}</span>
+          </div>
+        </td>
+        <td>
+          <div class="stats-right">
+            <span  class="head-text">Av Shots Off Target</span>
+            <span class="data-text">{{matchStatistics.stats.avShotsOffTarget}}</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="stats-left">
+            <span  class="head-text">Av Possesion Percent</span>
+            <span class="data-text">{{matchStatistics.stats.avPossessionPercent}}</span>
+          </div>
+        </td>
+        <td>
+          <div class="stats-right">
+            <span  class="head-text">Shots On Target</span>
+            <span class="data-text">{{matchStatistics.stats.shotsOnTarget}}</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="stats-left">
+            <span  class="head-text">Fouls</span>
+            <span class="data-text">{{matchStatistics.stats.fouls}}</span>
+          </div>
+        </td>
+        <td>
+          <div class="stats-right">
+            <span  class="head-text">Av Shots On Target</span>
+            <span class="data-text">{{matchStatistics.stats.avShotsOnTarget}}</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="stats-left">
+            <span  class="head-text">Av Fouls Per Game</span>
+            <span class="data-text">{{matchStatistics.stats.avFoulsPerGame}}</span>
+          </div>
+        </td>
+        <td>
+          <div class="stats-right">
+            <span  class="head-text">Total Corners</span>
+            <span class="data-text">{{matchStatistics.stats.totalCorners}}</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="stats-left">
+            <span  class="head-text">Offside</span>
+            <span class="data-text">{{matchStatistics.stats.offside}}</span>
+          </div>
+        </td>
+        <td>
+          <div class="stats-right">
+            <span  class="head-text">Av Corners</span>
+            <span class="data-text">{{matchStatistics.stats.avCorners}}</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="stats-left">
+            <span  class="head-text">Red cards</span>
+            <span class="data-text">{{matchStatistics.stats.redCards}}</span>
+          </div>
+        </td>
+        <td>
+          <div class="stats-right">
+            <span  class="head-text">BTTS</span>
+            <span class="data-text">{{matchStatistics.stats.btts}}</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="stats-left">
+            <span  class="head-text">Yellow Cards</span>
+            <span class="data-text">{{matchStatistics.stats.yellowCards}}</span>
+          </div>
+        </td>
+        <td>
+          <div class="stats-right">
+            <span  class="head-text">Av Player Rating Per Match</span>
+            <span class="data-text">{{matchStatistics.stats.avPlayerRatingPerMatch}}</span>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="stats-left">
+            <span  class="head-text">Shots Blocked</span>
+            <span class="data-text">{{matchStatistics.stats.shotsBlocked}}</span>
+          </div>
+        </td>
+        <td>
+          <div class="stats-right">
+            <span  class="head-text">Tackles</span>
+            <span  class="data-text">{{matchStatistics.stats.tackles}}</span>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<app-not-stat *ngIf="!matchStatistics" [title]="'Season Match Stats'"></app-not-stat>
+</div>
+</div>

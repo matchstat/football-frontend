@@ -1,0 +1,124 @@
+@import "../../../../styles/styles";
+.block {
+  display: flex;
+  gap: 40px;
+  @include for-phone-only {
+    gap: 10px;
+  }
+}
+
+
+.table-grid {
+  padding: 4px 0 0;
+  @include for-phone-only {
+    padding: 0;
+  }
+}
+
+.grid-item {
+  padding: 16px 0;
+  grid-template-columns: 9fr 3fr;
+  align-items: center;
+  @include for-phone-only {
+    padding: 2px 8px 4px;
+  }
+}
+
+.team {
+  display: flex;
+  align-items: center;
+}
+
+.emblem {
+  max-height: 24px;
+  margin-right: 9px;
+  @include for-phone-only {
+    max-height: 10px;
+  }
+}
+
+.section-body{
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding-bottom: 16px;
+  @include for-phone-only {
+    padding-bottom: 8px;
+  }
+}
+
+.recently-header {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+  align-items: center;
+  padding: 0;
+  background-color: $clr-gray-30;
+  border-radius: 6px;
+  margin-top: 20px;
+
+  @include for-phone-only {
+    border-radius: 3px;
+    margin-top: 10px;
+  }
+
+  &>:first-child {
+    padding: 8px 14px;
+    border-right: 1px solid $white;
+
+    @include for-phone-only {
+      padding: 5px 8px;
+    }
+  }
+
+    &>:last-child {
+      padding: 7px 0 7px 16px;
+  
+      @include for-phone-only {
+        padding: 4px 0 4px 8px;
+      }
+    }
+  
+    .league-text {
+      @include font-params(14px, $clr-text-2, 600, normal);
+  
+      @include for-phone-only {
+        @include font-params(8px, $clr-text-2, 600, normal);
+      }
+    }
+}
+
+
+
+.league-recently {
+  cursor: pointer;
+  transition: 0.2s;
+  font-size: 14px;
+  font-weight: 600;
+  color: $clr-text-2;
+
+  @include for-phone-only {
+    font-size: 8px;
+    font-weight: 600;
+  }
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  background-color: transparent;
+  border: none;
+}
+
+app-league-emblem {
+  margin: 0 auto;
+}
+.header {
+  padding: 15px;
+}
+
+.not-data-found {
+  display: flex;
+  background-color: white;
+  padding: 2rem;
+  justify-content: center;
+  align-items: center;
+}

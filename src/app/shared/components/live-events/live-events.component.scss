@@ -1,0 +1,44 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixins";
+
+.image {
+  width: 2rem;
+  aspect-ratio: 1/ 1;
+  margin-right: 1.5rem;
+  object-fit: contain;
+}
+
+.live,
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  img {
+    width: 0.4rem;
+    height: 0.4rem;
+    margin-inline: 0.8rem;
+  }
+}
+
+.live-event {
+  .team-name {
+    @include font-params(14px, $clr-text-1, 600, 1rem);
+    @include for-phone-only {
+      font-size: 0.5rem;
+    }
+    margin-bottom: 4px;
+  }
+
+  .country-name {
+    @include font-params(0.75rem, $clr-text-2, 400, 1rem);
+    @include for-phone-only {
+      font-size: 0.5rem;
+    }
+  }
+}
+
+.live-event {
+  cursor: pointer;
+  display: flex;
+}

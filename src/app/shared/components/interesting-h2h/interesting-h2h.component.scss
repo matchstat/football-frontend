@@ -1,0 +1,49 @@
+@import "../../../../styles/mixins";
+@import "../../../../styles/variables";
+
+.flags,
+.players,
+.count {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.image {
+  width: 18px;
+  aspect-ratio: 1/ 1;
+  object-fit: contain;
+  margin-right: 1rem;
+}
+
+.players,
+.count {
+  @include font-params(14px, $clr-text-1, 400, 1rem);
+  @include for-phone-only {
+    font-size: 0.5rem;
+  }
+
+  :first-child {
+    font-weight: 600;
+  }
+}
+
+.players {
+  flex: 1;
+  cursor: pointer;
+}
+
+.count {
+  padding-right: 1rem;
+  border-right: 1px solid $clr-line;
+
+  :last-child {
+    color: $clr-text-2;
+  }
+}
+
+.stats {
+  padding-left: 1rem;
+  align-self: center;
+}

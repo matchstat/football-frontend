@@ -1,0 +1,21 @@
+@import "../../../../styles/mixins";
+@import "../../../../styles/variables";
+
+.btn-more {
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border: none;
+  width: fit-content;
+  margin-inline: auto;
+  justify-content: center;
+  text-transform: uppercase;
+  &:hover {
+    color:$hover-blue;
+  }
+
+  @include font-params(14px, $clr-accent, 400, 1rem);
+  @include for-phone-only {
+    font-size: 0.5rem;
+  }
+}

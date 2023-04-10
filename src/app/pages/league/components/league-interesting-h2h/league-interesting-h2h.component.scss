@@ -1,0 +1,97 @@
+@import "../../../../../styles/variables";
+@import "../../../../../styles/mixins";
+
+.h2h-matches {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid $clr-line;
+
+  @include for-phone-only {
+    grid-template-columns: 1fr 0.5fr 1fr;
+    padding: 1rem 0;
+  }
+
+  .stats {
+    margin-inline: auto;
+  }
+
+  .h2h-score {
+    display: flex;
+    align-items: center;
+    border-radius: 0.25rem;
+    background-color: $clr-gray-20;
+    padding: 0.25rem 1rem;
+    margin-bottom: 1rem;
+
+    p {
+      padding-inline: 1rem;
+      @include font-params(28px, $clr-text-2, 400, 35px);
+      @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        font-size: 10px;
+      }
+    }
+
+    span {
+      color: $clr-text-2;
+    }
+
+    @include for-phone-only {
+      padding: 2px 0.5rem;
+      margin-bottom: 0.5rem;
+      p {
+        font-size: 0.75rem;
+        padding-inline: 0.5rem;
+      }
+    }
+  }
+}
+
+::ng-deep .h2h-matches {
+  .home,
+  .away {
+    gap: 10px !important;
+
+    @include font-params(1rem, $clr-text-2, 400, 20px);
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
+      font-size: 10px;
+    }
+    p {
+      cursor: pointer;
+      text-align: center !important;
+    }
+  }
+
+  .home {
+    flex-direction: column-reverse;
+  }
+  .away {
+    flex-direction: column;
+  }
+
+  .winner {
+    .home,
+    .away {
+      font-weight: 600;
+      color: $clr-text-1;
+    }
+  }
+
+  @include for-phone-only {
+    .home,
+    .away {
+      font-size: 0.5rem;
+    }
+  }
+}
+
+.section-body {
+  :last-child:where(.h2h-matches) {
+    border: none;
+  }
+}
+
+.winner {
+  color: $clr-text-1 !important;
+  font-weight: 600 !important;
+}

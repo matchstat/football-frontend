@@ -1,0 +1,65 @@
+<div class="mb-20">
+<div class="section-header text-uppercase">Competition Standings</div>
+<div class="section-body">
+  <div class="compition-select">
+  <app-select-league
+    [leagues]="leagues"
+    [curLeague]="leagueId"
+    (selectedLeague)="selectLeague($event)"
+  ></app-select-league>
+  <app-select-range
+    [seasons]="seasons"
+    [curSeason]="curSeason"
+    (selectedSeason)="selectSeason($event)"
+  ></app-select-range>
+  </div>
+  <table class="w-100" *ngIf="competitionStandings.length">
+    <thead>
+      <tr class="text-uppercase">
+        <td class="text-center">№</td>
+        <td class="team-header">Team</td>
+        <td>P</td>
+        <td>W</td>
+        <td>D</td>
+        <td>L</td>
+        <td>goals</td>
+        <!-- <td>Last 5</td> -->
+        <td>pts</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of competitionStandings"
+      (click)="navigateToTeamPage(item.name)" class="pointer">
+        <td class="text-center d-flex align-items-center"><span [className]="'position-color ' + item.class"></span>{{ item.rank }}</td>
+        <td><app-team [teamEmblem]="item.logo_path" [teamName]="item.name" [needSmallIcon]="true" class="competition-text"></app-team></td>
+        <td>{{ item.gamesPlayed }}</td>
+        <td>{{ item.wins }}</td>
+        <td>{{ item.draws }}</td>
+        <td>{{ item.losses }}</td>
+        <td>{{ item.goalsTotal }}</td>
+        <td>
+          <!-- <div class="d-flex flex-wrap match-result">
+          <div
+            *ngFor="let result of recentGames; let i = index"
+            class="results"
+            [class.result-win]="result === 'w'"
+            [class.result-loose]="result === 'l'"
+          >
+            {{ result === "w" ? "W" : "L" }}
+          </div>
+        </div> -->
+      </td>
+        <td class="point-text">{{ item.points }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <app-uefa-info *ngIf="competitionStandings.length"></app-uefa-info>
+  <app-not-stat *ngIf="!competitionStandings.length" [title]="'Competition Standings'"></app-not-stat>
+</div>
+
+<app-more
+    *ngIf="lastLength !== competitionStandings.length"
+    (getMore)="more()"
+    [loaderState]="loaderState"
+  ></app-more>
+</div>

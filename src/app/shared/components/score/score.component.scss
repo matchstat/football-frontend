@@ -1,0 +1,43 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixins";
+
+.result {
+  width: 3px;
+  height: 23px;
+  margin-right: 23px;
+
+  @include for-phone-only {
+    height: 17px;
+    width: 2px;
+    margin-right: 12px;
+  }
+
+  &-win {
+    background: $win;
+  }
+  &-draw {
+    background: $draw;
+  }
+  &-lost {
+    background: $lost;
+  }
+}
+
+.score-lost {
+  color: $clr-text-2;
+}
+
+.score-win {
+  font-weight: 600;
+}
+
+.score {
+  display: flex;
+  justify-content:space-between ;
+  // margin-left: -19px;
+  align-items: center;
+
+  @include for-phone-only {
+    // margin-left: -10px;
+  }
+}

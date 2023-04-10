@@ -1,0 +1,85 @@
+@import '../../../../styles/styles';
+
+.match {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #21272A;
+  padding: 15px;
+}
+
+.team-data{
+  padding-left: 16px !important;
+  @include for-phone-only {
+    padding-left: 8px !important;
+  }
+}
+
+
+.table-grid {
+
+ padding-top: 0;
+  
+  &>:last-child {
+      padding-bottom: 0 !important;
+    }
+
+  .past-header {
+    display: grid;
+    grid-template-columns: 1fr 11fr;
+    align-items: center;
+   padding: 0;
+    background-color: $clr-gray-30;
+    border-radius:6px;
+
+    @include for-phone-only {
+      border-radius: 3px;
+    }
+
+    &>:first-child {
+      padding: 7px 14px;
+      border-right: 1px solid $white;
+
+      // img{
+      //   width:24px;
+      // }
+      @include for-phone-only {
+          padding: 5px 8px;
+          // img {
+          //     width: 19px;
+          //   }
+        }
+    }
+
+    &>:last-child {
+      padding: 7px 0 7px 16px;
+      @include for-phone-only {
+          padding: 4px 0 4px 8px;
+        }
+    }
+
+    .league-text {
+        @include font-params(14px, $clr-text-2, 600, normal);
+    
+        @include for-phone-only {
+          @include font-params(8px, $clr-text-2, 600, normal);
+        }
+      }
+  }
+
+  .grid-item {
+      grid-template-columns: 1fr 8fr .5fr .5fr 1fr .5fr;
+      // grid-template-columns: 52px 8fr 16px 38px 54px 45px;
+      padding: 16px 0;
+    @include for-phone-only {
+      padding: 8px 0;
+    }
+    }
+
+}
+
+.no-past-matches {
+  display: flex;
+  justify-content: center;
+  padding-top: 32px !important;
+}

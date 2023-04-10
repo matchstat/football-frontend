@@ -1,0 +1,281 @@
+@import "mixins";
+@import "variables";
+
+.font-weight-bold {
+  font-weight: 600;
+}
+
+.font-weight-400 {
+  font-weight: 400;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-end {
+  text-align: end;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-1 {
+  gap: 0.5rem;
+}
+
+.gap-2 {
+  gap: 1rem;
+}
+
+.last-games {
+  display: flex;
+  gap: 8px;
+
+  @include for-phone-only {
+    gap: 3px;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.d-none {
+  display: none;
+}
+
+.title {
+  @include font-params(20px, $clr-text-1, 600, 24px);
+  @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    font-size: 1rem;
+  }
+  @include for-phone-only {
+    font-size: 10px;
+  }
+}
+
+@include for-phone-only {
+  .hide-mobile {
+    display: none;
+  }
+}
+
+.mb-1 {
+  margin-bottom: 0.25rem !important;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.mb-40 {
+  margin-bottom: 40px;
+
+  @include for-phone-only {
+    margin-bottom: 20px;
+  }
+}
+.mb-60 {
+  margin-bottom: 60px;
+
+  @include for-phone-only {
+    margin-bottom: 20px;
+  }
+}
+.mw-360 {
+  max-width: 360px;
+  width: 100%;
+
+  @include for-phone-only {
+    max-width: 100%;
+  }
+}
+
+.pl-4 {
+  padding-left: 2rem;
+}
+.pl-2 {
+  padding-left: 1rem;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.position {
+  display: flex;
+  align-items: center;
+  @include for-phone-only {
+    line-height: 1.3;
+    margin-right: 0.5rem;
+  }
+  &-color {
+    height: 42px;
+    width: 2px;
+    margin-right: 1.25rem;
+
+    @include for-phone-only {
+      height: 20px;
+      width: 2px;
+      margin-right: 8px;
+    }
+  }
+
+  &-league-champions {
+    background: #2bd299;
+  }
+  &-league-europe {
+    background: #3a63f3;
+  }
+  &-league-conference {
+    background: $win;
+
+    opacity: 0.4;
+  }
+  &-relegation {
+    background: #f33c59;
+  }
+
+  &-info {
+    margin-right: 10px;
+
+    @include for-phone-only {
+      margin-right: 4px;
+    }
+  }
+}
+
+.three-rows {
+  table {
+    thead {
+      td {
+        border-bottom: 1px solid #b5b5b5 !important;
+        line-height: 16px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+
+        @include for-phone-only {
+          padding-bottom: 0;
+          padding-top: 0;
+        }
+      }
+
+      tr {
+        &:last-child td {
+          padding-bottom: 7px;
+
+          @include for-phone-only {
+            padding-bottom: 0;
+          }
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        &:last-child td {
+          padding-bottom: 5px;
+
+          @include for-phone-only {
+            padding-bottom: 4px;
+          }
+        }
+      }
+    }
+
+    td,
+    th {
+      width: 32.2%;
+      text-align: center;
+
+      @include for-phone-only {
+        width: 32.5%;
+      }
+
+      &:first-child {
+        width: 32.3%;
+        padding-left: 20px;
+        text-align: left;
+
+        @include for-phone-only {
+          padding-left: 10px;
+          width: 37%;
+        }
+      }
+
+      &:last-child {
+        width: 35.5%;
+
+        @include for-phone-only {
+          width: 32.5%;
+        }
+      }
+    }
+  }
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.put-forward {
+  z-index: 99999 !important;
+}

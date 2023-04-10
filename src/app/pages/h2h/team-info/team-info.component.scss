@@ -1,0 +1,492 @@
+@import "../../../../styles/styles";
+
+td {
+  width: 50%;
+}
+
+table {
+  tr {
+    & > :first-child {
+      padding-left: 0 !important;
+      border-right: 1px dashed $clr-line !important;
+    }
+  }
+
+  tr:first-child td {
+    .stats-left,
+    .stats-right {
+      padding-top: 0 !important;
+    }
+  }
+
+  tr:last-child td {
+    .stats-left,
+    .stats-right {
+      padding-bottom: 0 !important;
+      border: none;
+    }
+  }
+}
+
+.image-container {
+  width: 100px;
+  height: 121px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0) -2.7%,
+      rgba(255, 255, 255, 0.4) 30.58%,
+      rgba(255, 255, 255, 0) 87.29%);
+
+  img {
+    height: 80px;
+    width: 70%;
+  }
+
+  @include for-phone-only {
+    width: 60px;
+    img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+        margin-inline: auto;
+      }
+  }
+}
+
+.right-border {
+  border-right: 1px dashed $white;
+}
+
+.section-body {
+  padding-top: 20px;
+
+  @include for-phone-only {
+    padding-top: 10px;
+  }
+}
+
+.stats-left {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 32px;
+  padding: 17px 0 13px;
+  border-bottom: 1px solid $clr-line;
+
+  @include for-phone-only {
+    margin-right: 16px;
+    padding: 8px 0 6px;
+  }
+}
+
+.stats-right {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 32px;
+  padding: 17px 0 13px;
+  border-bottom: 1px solid $clr-line;
+
+  @include for-phone-only {
+    margin-left: 16px;
+    padding: 8px 0 6px;
+  }
+}
+
+.head-text {
+  @include font-params(14px, $clr-text-2, 400, 16px);
+  text-align: left;
+  @include for-phone-only {
+    @include font-params(8px, $clr-text-2, 400, 16px);
+  }
+}
+
+.data-text {
+  @include font-params(14px, $clr-text-1, 600, 16px);
+  text-align: right;
+  @include for-phone-only {
+    @include font-params(8px, $clr-text-1, 600, 16px);
+  }
+}
+
+.profile-image {
+  width: 100%;
+  border-radius: 6px;
+
+  @include for-phone-only {
+    max-height: 89px;
+  }
+}
+
+app-header-component {
+  margin-bottom: 12px;
+
+  @include for-phone-only {
+    margin-bottom: 4px;
+  }
+}
+
+.card {
+  &-header {
+    &.trophies {
+      padding: 24px 0 14px;
+
+      @include for-phone-only {
+        padding: 11px 0 0;
+      }
+    }
+    &.rivals {
+      padding: 16px 0 18px;
+
+      @include for-phone-only {
+        padding: 8px 0 0;
+      }
+    }
+  }
+
+  &-body {
+    padding: 16px 0 8px;
+
+    @include for-phone-only {
+      padding: 8px 0 0;
+    }
+
+    &.trophies {
+      padding: 0;
+    }
+    &.rivals {
+      padding: 0 0 9px;
+
+      @include for-phone-only {
+        padding: 0;
+      }
+    }
+  }
+
+  &-filter {
+    display: flex;
+    gap: 13px;
+  }
+
+  &-item {
+    display: flex;
+    justify-content: space-between;
+
+    .trophies & {
+      padding: 13px 0 15px;
+
+      @include for-phone-only {
+        padding: 4px 0 2px;
+      }
+
+      &:last-child {
+        padding-bottom: 15px !important;
+        border-bottom: 1px solid #dde1e6 !important;
+
+        @include for-phone-only {
+          padding-bottom: 2px !important;
+        }
+      }
+    }
+
+    .rivals & {
+      padding: 8px 0;
+
+      @include for-phone-only {
+        padding: 4px 0 2px;
+      }
+    }
+  }
+}
+
+.right {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  text-align: right;
+}
+
+.btn-info {
+  background: #f1f2f5;
+  padding: 10px 13px;
+  white-space: nowrap;
+
+  @include for-phone-only {
+    font-size: 8px;
+    padding: 2px 4px;
+  }
+}
+.card-header {
+  background-color: white;
+}
+
+//@@@@@@@@@@@@@@@@
+// team info
+//@@@@@@@@@@@@@@@@
+
+.h2h-teams-info {
+  background: $bg-gradient-dark,
+    url("../../../../assets/images/tourament-bg-image.svg");
+  margin-bottom: 1.5rem;
+  padding: 0 2rem 2rem;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+
+  @include for-phone-only {
+    padding: 0 1rem 1rem;
+  }
+
+  .team-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    @media (max-width: 425px) {
+      // flex-direction: column;
+    }
+
+    & > * {
+      flex-grow: 0;
+      flex-basis: 50%;
+    }
+
+    .team {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+
+      .team-name {
+        @include font-params(24px, $white, 600, 30px);
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+          font-size: 1.25rem;
+          line-height: 1.2;
+        }
+        @include for-phone-only {
+          font-size: 1rem;
+          line-height: 1.2;
+        }
+      }
+
+      &-logo {
+        background: $bg-gradient-light;
+        padding: 0 0.75rem;
+
+        img {
+          width: 80px;
+          height: 80px;
+          object-fit: contain;
+          margin-inline: auto;
+        }
+
+        @include for-phone-only {
+          padding: 1rem 0.5rem;
+          img {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            margin-inline: auto;
+          }
+        }
+        @media only screen and (max-width: 768px) {
+          img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            margin-inline: auto;
+          }
+        }
+      }
+
+      @include for-phone-only {
+        gap: 1rem;
+      }
+    }
+
+    .home ,.away{
+      @media (max-width: 425px) {
+        margin-bottom: 1rem;
+      }
+    }
+
+    .away {
+      justify-content: end;
+      @media (max-width: 425px) {
+        // flex-direction: row-reverse;
+      }
+    }
+
+    .team-country {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      text-transform: uppercase;
+      @include font-params(12px, $white, 600, 1rem);
+    }
+
+    .home-team-name,
+    .away-team-name {
+      width: 100%;
+      height: 100%;
+      border-bottom: 1px solid rgba($white, 0.5);
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+
+      @media (max-width: 425px) {
+        border-bottom: none;
+      }
+    }
+
+    .away-team-name {
+      justify-content: right;
+      @media (max-width: 425px) {
+        // justify-content: left;
+      }
+    }
+
+    .away-team-logo {
+      .team-country {
+        text-align: right;
+      }
+    }
+  }
+
+  .team-stats {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+
+    &::before {
+      content: "";
+      // height: 100%;
+      // width: 1px;
+      // position: absolute;
+      // top: 0;
+      // left: 50%;
+      // border: 1px dashed rgba($white, 0.5);
+    }
+
+    .home,
+    .away {
+      display: flex;
+      flex-direction: column;
+    }
+
+    & > * {
+      flex-grow: 0;
+      flex-basis: 50%;
+      height: 100%;
+    }
+
+    .trophy {
+      display: flex;
+      align-items: center;
+
+      @include for-phone-only {
+        margin-bottom: 0.5rem;
+      }
+
+      &-name {
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        flex-basis: 70%;
+        gap: 0.5rem;
+        @include font-params(14px, rgba($white, 0.6), 400, 18px);
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+          font-size: 10px;
+          line-height: 1.2;
+        }
+        @include for-phone-only {
+          font-size: 10px;
+          line-height: 1.2;
+        }
+      }
+
+      &-count {
+        flex-basis: 30%;
+        @include font-params(24px, $white, 600, 30px);
+        @media only screen and (min-width: 768px) and (max-width: 1024px) {
+          font-size: 1.25rem;
+          line-height: 1.2;
+        }
+        @include for-phone-only {
+          font-size: 10px;
+          line-height: 1.2;
+        }
+      }
+    }
+
+    .trophy-icon {
+      width: 1rem;
+      height: 1rem;
+      object-fit: contain;
+      @include for-phone-only {
+        width: 0.5rem;
+        height: 0.5rem;
+        object-fit: contain;
+      }
+    }
+
+    .away .trophy {
+      flex-direction: row-reverse;
+      &-name {
+        flex-direction: row-reverse;
+        text-align: right;
+      }
+      &-count {
+        text-align: right;
+      }
+    }
+
+    .recent-form {
+      text-transform: capitalize;
+      margin-bottom: 1rem;
+      margin-top: 1rem;
+      @include font-params(14px, rgba($white, 0.6), 400, 18px);
+      @media only screen and (min-width: 768px) and (max-width: 1024px) {
+        font-size: 10px;
+        line-height: 1.2;
+      }
+
+      p {
+        // font-size: 14px !important;
+        margin-bottom: 0.25rem;
+      }
+
+      .match-result {
+        .btn-lost,
+        .btn-win {
+          border-radius: 50% !important;
+          border: 1.5px solid $clr-primary !important;
+          margin-left: -6px;
+          @include font-params(10px, $white, 700, 13px);
+        }
+      }
+    }
+
+    .home .match-result{
+      padding-left: 4px;
+    }
+
+    .away .recent-form {
+      text-align: right;
+
+      .match-result {
+        width: fit-content;
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+.flag-icon {
+  flex-grow: 1;
+  min-width: 22px;
+  max-width: 22px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
